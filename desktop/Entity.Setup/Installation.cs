@@ -57,7 +57,7 @@ public static class Installation
             void Shortcut(string file)
             {
                 dynamic link = automation.CreateShortcut(file); link.TargetPath = Path.Combine(destination, "Entity.exe");
-                link.WorkingDirectory = destination; link.Description = "Entity Minecraft companion"; link.Save();
+                link.WorkingDirectory = destination; link.Description = "Entity Minecraft bot"; link.Save();
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(link);
             }
             var menu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Entity"); Directory.CreateDirectory(menu);
