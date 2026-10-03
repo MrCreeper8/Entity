@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace Entity.Desktop;
@@ -21,6 +22,9 @@ public sealed record AppSettings
     public string JavaPath { get; init; } = "";
     public int ClientMemoryMb { get; init; } = 4096;
     public int ServerMemoryMb { get; init; } = 2048;
+    public bool FirstSetupCompleted { get; init; }
+    [JsonExtensionData]
+    public Dictionary<string, JsonElement>? AdditionalSettings { get; init; }
 
     public void Validate()
     {
