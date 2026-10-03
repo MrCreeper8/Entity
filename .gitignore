@@ -1,5 +1,6 @@
 **/.gradle/
 **/build/
+!core/src/main/java/dev/entity/core/build/
 **/bin/
 **/obj/
 desktop/Entity.Setup/bundle.zip
