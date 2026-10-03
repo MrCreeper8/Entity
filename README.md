@@ -5,28 +5,24 @@ Baritone performs actions, while the mandatory EntityBridge Paper plugin supplie
 commands and server observations. Human players can use an unmodified vanilla
 1.21.8 client. A vanilla server, Realms, and remote-hosted bridge are not supported.
 
-## Distribution status
+## Download
 
-**[Download the Windows standalone preview](https://github.com/MrCreeper8/Entity/releases/tag/v2.22.1).**
-The 2.22.1 installer and portable ZIP have verified local server joining and normal
-shutdown in both Visible and Background modes. Final-package managed/external AI
-end-to-end checks and earlier survival acceptance remain incomplete. This is a
-preview, not a claim that every gameplay capability is fully verified.
+**[Download Entity 2.22.1 for Windows](https://github.com/MrCreeper8/Entity/releases/tag/v2.22.1).**
+Choose **Entity-Setup-2.22.1-win-x64.exe** for installation, or the portable ZIP.
+This is the official release, with the same packaged binaries previously offered
+as a preview. Prism and a separate .NET installation are not required.
 
-This is the **2.22.0 distribution candidate source**, not a declaration that an
-installer or final release has shipped. Standalone setup and AI
-backend selection require the exact candidate's release verification. Follow the
-release's downloadable checksums and notes when a verified release is published.
-Existing gameplay remains experimental; no all-biome, all-schematic or flawless
+The installer and portable ZIP have verified local server joining and normal
+shutdown in Visible and Background modes. Final-package managed/external AI
+end-to-end verification and the full fresh-survival survey remain incomplete.
+Gameplay and conversation are experimental; see the release notes for the exact
+verification coverage and limitations. No all-biome, all-schematic or flawless
 survival guarantee is made. Original Entity code is **all rights reserved** with
 personal download/build/install/play permission in [LICENSE](LICENSE); it is not
 open source. Third-party rights are preserved in
 [third-party notices](THIRD-PARTY-NOTICES.md).
 
-## Intended Windows quick start
-
-These are the target standalone-app steps; controls still under verification are
-candidate scope, not already-shipped capabilities.
+## Windows quick start
 
 1. Use a Windows x64 machine capable of running Minecraft 1.21.8. Download the
    verified Entity installer or portable package and check its SHA-256. Prism is
@@ -41,13 +37,13 @@ candidate scope, not already-shipped capabilities.
    Never weaken authentication on an existing server as a workaround.
 4. Choose **Visible** or **Background**, independently of AI. Both run a complete
    Minecraft client and require normal graphics support: Background is not
-   GPU-free/headless server execution. Background is intended to be silent and
+   GPU-free/headless server execution. Background is silent and
    input-isolated. The dedicated bot must not capture your mouse or keyboard.
 5. Choose **AI Off** to use deterministic `/e` commands without a model download.
    **Managed Local** selects the pinned NVIDIA/CUDA model/runtime, with optional
    multi-gigabyte verified downloads and readiness checks. **External** accepts
    a compatible endpoint/model; cloud use requires explicit
-   consent and never be a silent fallback. See [AI and privacy](docs/ai-and-privacy.md).
+   consent and is never a silent fallback. See [AI and privacy](docs/ai-and-privacy.md).
 6. Start the local server and bot, then join with your normal human client. Use
    `/e help`, `/e status`, `/e follow`, `/e come`, and `/e stop`. Only the configured
    owner/authorized controllers may control Entity. The app includes command help.
@@ -83,7 +79,7 @@ not permissions. Personal prompt documentation/history is not included.
 ## Data, updates and troubleshooting
 
 Keep persistent worlds, settings, imports and world-scoped Entity state when
-updating. Candidate app upgrades/rollback must operate on versioned application
+updating. App upgrades/rollback operate on versioned application
 files, not roll a live world back. Stop owned processes before changing jars;
 retain the previous verified package and back up data separately.
 
