@@ -27,8 +27,10 @@ public sealed class ServerRuntime
     public bool Running => process is { HasExited: false };
     public static bool PortInUse(int port) => System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners().Any(x => x.Port == port);
 
-    public async Task PrepareAsync(AppSettings settings, ProductPayload payload)
+    public async Task PrepareAsync(AppSettings settings, ProductPayload payload, CancellationToken cancellationToken = default, IProgress<SetupProgress>? progress = null)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+        progress?.Report(new SetupProgress("Preparing local server"));
         settings.Validate();
         if (Running) throw new InvalidOperationException("Stop the managed server before changing its files or settings.");
         using var active = ProcessCustody.Open(Path.Combine(paths.Root, "server-process.json"));
@@ -54,18 +56,12 @@ public sealed class ServerRuntime
             throw new InvalidOperationException("This folder already contains a server. Select Use existing server to preserve it.");
         Directory.CreateDirectory(root);
         var paper = Path.Combine(root, "paper-1.21.8-60.jar");
-        if (!File.Exists(paper))
-        {
-            report("Downloading verified Paper 1.21.8...");
-            using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
-            http.DefaultRequestHeaders.UserAgent.ParseAdd("Entity/2.22.0 (https://github.com/MrCreeper8/Entity)");
-            using var response = await http.GetAsync(PaperUrl, HttpCompletionOption.ResponseHeadersRead);
-            response.EnsureSuccessStatusCode();
-            await using (var output = File.Create(paper + ".partial")) await response.Content.CopyToAsync(output);
-            VerifyFile(paper + ".partial", PaperHash);
-            File.Move(paper + ".partial", paper);
-        }
-        VerifyFile(paper, PaperHash);
+        report("Preparing verified Paper 1.21.8...");
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("Entity/2.22.0 (https://github.com/MrCreeper8/Entity)");
+        await SetupTransfer.DownloadAsync(http, PaperUrl, paper, "Paper 1.21.8", PaperHash, null, cancellationToken, progress);
+        cancellationToken.ThrowIfCancellationRequested();
+        progress?.Report(new SetupProgress("Installing verified server components"));
         Directory.CreateDirectory(Path.Combine(root, "plugins"));
         var file = payload.Files.Single(x => x.Role == "server-plugin");
         var destination = Path.Combine(root, "plugins", file.File);
@@ -127,27 +123,24 @@ public sealed class ServerRuntime
         if (!match.Success || match.Groups[1].Value.Length < 16) throw new InvalidOperationException("The server's Entity pairing token is not configured.");
         return match.Groups[1].Value;
     }
-    private static void VerifyFile(string file, string hash)
+    public async Task<string> StartAsync(AppSettings settings, string? apiKey, CancellationToken cancellationToken = default)
     {
-        using var stream = File.OpenRead(file);
-        if (!Convert.ToHexString(SHA256.HashData(stream)).Equals(hash, StringComparison.OrdinalIgnoreCase))
-            throw new InvalidOperationException("The Paper download did not match its publisher checksum.");
-    }
-    public async Task<string> StartAsync(AppSettings settings, string? apiKey)
-    {
+        cancellationToken.ThrowIfCancellationRequested();
         if (!settings.ManageServer) return token;
         if (Running) return token;
         ready = new(TaskCreationOptions.RunContinuationsAsynchronously);
         if (PortInUse(settings.ServerPort) || PortInUse(settings.BridgePort))
             throw new InvalidOperationException("A server is already using the selected port. Use existing server or select unused ports.");
-        var launcher = new MinecraftLauncher(new MinecraftPath(paths.Game));
-        var java = settings.JavaPath.Length == 0 ? launcher.GetJavaPath(await launcher.GetVersionAsync(MinecraftRuntime.MinecraftVersion)) : settings.JavaPath;
+        using var metadataHttp = new HttpClient(new SetupMetadataHandler(cancellationToken));
+        var launcher = new MinecraftLauncher(MinecraftLauncherParameters.CreateDefault(new MinecraftPath(paths.Game), metadataHttp));
+        var java = settings.JavaPath.Length == 0 ? launcher.GetJavaPath(await launcher.GetVersionAsync(MinecraftRuntime.MinecraftVersion, cancellationToken)) : settings.JavaPath;
         if (java == null) throw new InvalidOperationException("Prepare the Minecraft runtime before starting Paper.");
         var info = new ProcessStartInfo(java) { WorkingDirectory = DirectoryFor(settings), CreateNoWindow = true, WindowStyle = ProcessWindowStyle.Hidden,
             UseShellExecute = false, RedirectStandardInput = true, RedirectStandardOutput = true, RedirectStandardError = true };
         foreach (var arg in new[] { "-Xms512M", "-Xmx" + settings.ServerMemoryMb + "M", "-jar", "paper-1.21.8-60.jar", "--nogui" }) info.ArgumentList.Add(arg);
         if (!string.IsNullOrWhiteSpace(apiKey)) info.Environment["ENTITY_AI_API_KEY"] = apiKey;
         var logFile = Path.Combine(paths.Logs, "paper-" + DateTime.UtcNow.ToString("yyyyMMdd-HHmmss") + ".log");
+        cancellationToken.ThrowIfCancellationRequested();
         writer = new StreamWriter(logFile) { AutoFlush = true };
         process = new Process { StartInfo = info, EnableRaisingEvents = true };
         void Line(string? line)
@@ -158,24 +151,30 @@ public sealed class ServerRuntime
             if (line.Contains("Done (") && line.Contains("For help")) ready.TrySetResult();
         }
         process.OutputDataReceived += (_, e) => Line(e.Data); process.ErrorDataReceived += (_, e) => Line(e.Data);
+        process.Exited += (_, _) => ready.TrySetException(new InvalidOperationException("Paper exited before becoming ready. Check its saved log."));
         if (!process.Start()) throw new InvalidOperationException("Paper could not start.");
-        ProcessCustody.Save(process, Path.Combine(paths.Root, "server-process.json"));
-        process.BeginOutputReadLine(); process.BeginErrorReadLine();
-        report("Starting local survival server...");
         try
         {
-            await ready.Task.WaitAsync(TimeSpan.FromMinutes(3));
-            await process.StandardInput.WriteLineAsync("op " + settings.OwnerName);
-            await process.StandardInput.FlushAsync();
+            process.BeginOutputReadLine(); process.BeginErrorReadLine();
+            ProcessCustody.Save(process, Path.Combine(paths.Root, "server-process.json"));
+            report("Starting local survival server...");
+            await ready.Task.WaitAsync(TimeSpan.FromMinutes(3), cancellationToken);
+            await process.StandardInput.WriteLineAsync(("op " + settings.OwnerName).AsMemory(), cancellationToken);
+            await process.StandardInput.FlushAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
         }
-        catch { await StopAsync(); throw new InvalidOperationException("Paper did not become ready. Its saved log contains the reason."); }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { await StopAsync(); throw; }
+        catch (Exception error) { await StopAsync(); throw new InvalidOperationException("Paper did not become ready. Its saved log contains the reason.", error); }
         report("Server ready. Join " + settings.ServerHost + ":" + settings.ServerPort + " from Minecraft Java 1.21.8.");
         return token;
     }
     public async Task StopAsync()
     {
-        using var verified = ProcessCustody.Open(Path.Combine(paths.Root, "server-process.json"));
-        if (verified == null) return;
+        // An in-memory child is already owned, even if its receipt could not be saved.
+        // Recovered children still require the complete custody identity check.
+        using var recovered = process is { HasExited: false } ? null : ProcessCustody.Open(Path.Combine(paths.Root, "server-process.json"));
+        var verified = process is { HasExited: false } ? process : recovered;
+        if (verified == null) { lock (this) { writer?.Dispose(); writer = null; } return; }
         if (process is { HasExited: false })
         { await process.StandardInput.WriteLineAsync("stop"); await process.StandardInput.FlushAsync(); }
         else await SendConsoleAsync("stop");

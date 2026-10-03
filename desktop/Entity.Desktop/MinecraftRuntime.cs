@@ -1,6 +1,5 @@
 using CmlLib.Core;
 using CmlLib.Core.Auth;
-using CmlLib.Core.ModLoaders.FabricMC;
 using CmlLib.Core.ProcessBuilder;
 using CmlLib.Core.Version;
 using System.Diagnostics;
@@ -53,26 +52,58 @@ public sealed class MinecraftRuntime
                 throw new InvalidOperationException($"Package needs exactly one {role} component.");
         return payload;
     }
-    public async Task PrepareAsync(AppSettings settings)
+    public async Task PrepareAsync(AppSettings settings, CancellationToken cancellationToken = default, IProgress<SetupProgress>? progress = null)
     {
+        cancellationToken.ThrowIfCancellationRequested();
         using var active = ProcessCustody.Open(Path.Combine(paths.Root, "client-process.json"));
         if (active != null) throw new InvalidOperationException("Stop Entity before preparing or upgrading its files.");
         settings.Validate();
         var payload = ValidatePayload();
         var minecraftPath = new MinecraftPath(paths.Game);
-        var launcher = new MinecraftLauncher(minecraftPath);
+        using var metadataHttp = new HttpClient(new SetupMetadataHandler(cancellationToken));
+        using var downloadHttp = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        var parameters = MinecraftLauncherParameters.CreateDefault(minecraftPath, metadataHttp);
+        parameters.GameInstaller = new VerifiedGameInstaller(downloadHttp, progress);
+        var launcher = new MinecraftLauncher(parameters);
         var last = DateTime.MinValue;
-        launcher.FileProgressChanged += (_, progress) =>
+        launcher.FileProgressChanged += (_, fileProgress) =>
         {
             if ((DateTime.UtcNow - last).TotalSeconds < 1) return;
             last = DateTime.UtcNow;
-            report($"Installing Minecraft: {progress.ProgressedTasks}/{progress.TotalTasks} files");
+            report($"Installing Minecraft: {fileProgress.ProgressedTasks}/{fileProgress.TotalTasks} files");
         };
         report("Preparing Minecraft 1.21.8 and Java 21 (first launch downloads required files)...");
-        await launcher.InstallAsync(MinecraftVersion);
-        var installer = new FabricInstaller(new HttpClient());
-        await installer.Install(MinecraftVersion, FabricVersion, minecraftPath);
-        await launcher.InstallAsync(FabricProfile);
+        progress?.Report(new SetupProgress("Preparing Minecraft 1.21.8 and Java 21"));
+        await launcher.InstallAsync(MinecraftVersion, cancellationToken);
+        // FabricInstaller in pinned CmlLib 4.0.6 has no cancellation API and writes
+        // directly to its final JSON. Fetch the same pinned profile atomically.
+        await SetupTransfer.DownloadAsync(downloadHttp,
+            $"https://meta.fabricmc.net/v2/versions/loader/{MinecraftVersion}/{FabricVersion}/profile/json",
+            minecraftPath.GetVersionJsonPath(FabricProfile), "Fabric profile", null, null, cancellationToken, progress,
+            validate: async file =>
+            {
+                using var profile = JsonDocument.Parse(await File.ReadAllTextAsync(file, cancellationToken));
+                if (profile.RootElement.GetProperty("id").GetString() != FabricProfile ||
+                    profile.RootElement.GetProperty("inheritsFrom").GetString() != MinecraftVersion)
+                    throw new InvalidDataException("The Fabric profile did not match the requested version.");
+            });
+        await launcher.InstallAsync(FabricProfile, cancellationToken);
+        // Finish all network work before changing the installed managed-mod set.
+        var sources = new Dictionary<string, string>();
+        foreach (var file in payload.Files.Where(x => x.Role is "client" or "fabric-api" or "baritone"))
+        {
+            var source = Path.Combine(payloadDirectory, file.File);
+            if (file.DownloadUrl != null)
+            {
+                source = Path.Combine(paths.Root, "downloads", file.File);
+                report("Preparing verified " + file.Role + " from its publisher...");
+                await SetupTransfer.DownloadAsync(downloadHttp, file.DownloadUrl, source, file.Role,
+                    file.Sha256, null, cancellationToken, progress);
+            }
+            sources[file.File] = source;
+        }
+        cancellationToken.ThrowIfCancellationRequested();
+        progress?.Report(new SetupProgress("Installing verified Entity components"));
         Directory.CreateDirectory(Path.Combine(paths.Game, "mods"));
         var installed = new List<PayloadFile>();
         var receiptFile = Path.Combine(paths.Root, "managed-mods.json");
@@ -91,21 +122,7 @@ public sealed class MinecraftRuntime
         }
         foreach (var file in payload.Files.Where(x => x.Role is "client" or "fabric-api" or "baritone"))
         {
-            var source = Path.Combine(payloadDirectory, file.File);
-            if (file.DownloadUrl != null)
-            {
-                var cache = Path.Combine(paths.Root, "downloads"); Directory.CreateDirectory(cache); source = Path.Combine(cache, file.File);
-                bool Verified() => File.Exists(source) && Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(source))).Equals(file.Sha256, StringComparison.OrdinalIgnoreCase);
-                if (!Verified())
-                {
-                    report("Downloading verified " + file.Role + " from its publisher...");
-                    using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
-                    await using (var output = File.Create(source + ".partial"))
-                        await (await http.GetAsync(file.DownloadUrl)).Content.CopyToAsync(output);
-                    File.Move(source + ".partial", source, true);
-                    if (!Verified()) throw new InvalidOperationException("Downloaded dependency failed its publisher checksum: " + file.Role);
-                }
-            }
+            var source = sources[file.File];
             var overrideJar = Path.Combine(paths.Root, "baritone-override.jar");
             if (file.Role == "baritone" && File.Exists(overrideJar))
             {
@@ -120,11 +137,32 @@ public sealed class MinecraftRuntime
         Directory.CreateDirectory(paths.Runtime);
         report("Entity client files are ready.");
     }
-    public async Task StartAsync(AppSettings settings, string? bridgeToken = null, bool connect = true)
+    public async Task StartAsync(AppSettings settings, string? bridgeToken = null, bool connect = true, CancellationToken cancellationToken = default)
     {
+        cancellationToken.ThrowIfCancellationRequested();
         using var existing = ProcessCustody.Open(Path.Combine(paths.Root, "client-process.json"));
         if (owned is { HasExited: false } || existing != null) throw new InvalidOperationException("Entity is already running.");
         settings.Validate();
+        using var metadataHttp = new HttpClient(new SetupMetadataHandler(cancellationToken));
+        var launcher = new MinecraftLauncher(MinecraftLauncherParameters.CreateDefault(new MinecraftPath(paths.Game), metadataHttp));
+        var options = new MLaunchOption
+        {
+            Session = MSession.CreateOfflineSession(settings.BotName),
+            MaximumRamMb = settings.ClientMemoryMb,
+            ScreenWidth = 960, ScreenHeight = 540,
+            GameLauncherName = "Entity", GameLauncherVersion = "2.22.1",
+            ServerIp = connect ? settings.ServerHost : null,
+            ServerPort = settings.ServerPort,
+            ExtraJvmArguments = new MArgument[]
+            {
+                new("-Dentity2.runtimeMode=" + settings.WindowMode.ToLowerInvariant()),
+                new("-Dentity2.backgroundInputIsolation=true")
+            }
+        };
+        if (settings.JavaPath.Length != 0) options.JavaPath = settings.JavaPath;
+        var process = await launcher.BuildProcessAsync(FabricProfile, options, cancellationToken);
+        cancellationToken.ThrowIfCancellationRequested();
+        // Defer launch-specific settings until cancellable metadata work completes.
         var stopFile = Path.Combine(paths.Runtime, "stop-request");
         if (File.Exists(stopFile)) File.Delete(stopFile);
         var statusFile = Path.Combine(paths.Runtime, "runtime-status.json");
@@ -142,23 +180,6 @@ public sealed class MinecraftRuntime
             if (config["bridge"] == null) config["bridge"] = bridge;
             AppPaths.AtomicWrite(configFile, config.ToJsonString(AppPaths.Json));
         }
-        var launcher = new MinecraftLauncher(new MinecraftPath(paths.Game));
-        var options = new MLaunchOption
-        {
-            Session = MSession.CreateOfflineSession(settings.BotName),
-            MaximumRamMb = settings.ClientMemoryMb,
-            ScreenWidth = 960, ScreenHeight = 540,
-            GameLauncherName = "Entity", GameLauncherVersion = "2.22.1",
-            ServerIp = connect ? settings.ServerHost : null,
-            ServerPort = settings.ServerPort,
-            ExtraJvmArguments = new MArgument[]
-            {
-                new("-Dentity2.runtimeMode=" + settings.WindowMode.ToLowerInvariant()),
-                new("-Dentity2.backgroundInputIsolation=true")
-            }
-        };
-        if (settings.JavaPath.Length != 0) options.JavaPath = settings.JavaPath;
-        var process = await launcher.BuildProcessAsync(FabricProfile, options);
         process.StartInfo.CreateNoWindow = true;
         process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
         process.StartInfo.UseShellExecute = false;
@@ -166,13 +187,26 @@ public sealed class MinecraftRuntime
         process.StartInfo.RedirectStandardError = true;
         if (!string.IsNullOrWhiteSpace(bridgeToken)) process.StartInfo.Environment["ENTITY_BRIDGE_TOKEN"] = bridgeToken;
         var logFile = Path.Combine(paths.Logs, "minecraft-" + DateTime.UtcNow.ToString("yyyyMMdd-HHmmss") + ".log");
+        cancellationToken.ThrowIfCancellationRequested();
         writer = new StreamWriter(logFile) { AutoFlush = true };
         process.OutputDataReceived += (_, e) => WriteLog(e.Data);
         process.ErrorDataReceived += (_, e) => WriteLog(e.Data);
         if (!process.Start()) throw new InvalidOperationException("Minecraft did not start.");
         owned = process;
-        process.BeginOutputReadLine(); process.BeginErrorReadLine();
-        ProcessCustody.Save(process, Path.Combine(paths.Root, "client-process.json"));
+        try
+        {
+            process.BeginOutputReadLine(); process.BeginErrorReadLine();
+            ProcessCustody.Save(process, Path.Combine(paths.Root, "client-process.json"));
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+        catch
+        {
+            // The Process object is the exact newly created child, even if saving
+            // its custody receipt failed. Never leave that child orphaned.
+            if (!process.HasExited) { process.Kill(false); await process.WaitForExitAsync(); }
+            lock (this) { writer?.Dispose(); writer = null; }
+            throw;
+        }
         report("Entity is starting. " + logFile);
     }
     private void WriteLog(string? line)
