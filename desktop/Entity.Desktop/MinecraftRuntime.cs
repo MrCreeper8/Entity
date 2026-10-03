@@ -150,7 +150,7 @@ public sealed class MinecraftRuntime
             Session = MSession.CreateOfflineSession(settings.BotName),
             MaximumRamMb = settings.ClientMemoryMb,
             ScreenWidth = 960, ScreenHeight = 540,
-            GameLauncherName = "Entity", GameLauncherVersion = "2.22.1",
+            GameLauncherName = "Entity", GameLauncherVersion = "2.22.2",
             ServerIp = connect ? settings.ServerHost : null,
             ServerPort = settings.ServerPort,
             ExtraJvmArguments = new MArgument[]

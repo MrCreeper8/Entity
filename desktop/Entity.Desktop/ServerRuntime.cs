@@ -58,7 +58,7 @@ public sealed class ServerRuntime
         var paper = Path.Combine(root, "paper-1.21.8-60.jar");
         report("Preparing verified Paper 1.21.8...");
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        http.DefaultRequestHeaders.UserAgent.ParseAdd("Entity/2.22.0 (https://github.com/MrCreeper8/Entity)");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("Entity/2.22.2 (https://github.com/MrCreeper8/Entity)");
         await SetupTransfer.DownloadAsync(http, PaperUrl, paper, "Paper 1.21.8", PaperHash, null, cancellationToken, progress);
         cancellationToken.ThrowIfCancellationRequested();
         progress?.Report(new SetupProgress("Installing verified server components"));
