@@ -8,7 +8,7 @@ internal static class Program
     private static void Main()
     {
         ApplicationConfiguration.Initialize();
-        var form = new Form { Text = "Install Entity 2.22.1", Width = 560, Height = 300, StartPosition = FormStartPosition.CenterScreen, MaximizeBox = false };
+        var form = new Form { Text = "Install Entity 2.22.2", Width = 560, Height = 300, StartPosition = FormStartPosition.CenterScreen, MaximizeBox = false };
         var info = new Label { Dock = DockStyle.Top, Height = 145, Padding = new Padding(20), Text = "Install Entity for this Windows user. No administrator access needed.\n\nMinecraft, Java and Paper are downloaded on first launch. AI is optional and downloaded only when selected. No Prism launcher is required.\n\nExisting worlds and settings stay untouched. Original Entity code is all rights reserved, with personal download/install/play permission. Third-party licenses remain unchanged." };
         var status = new Label { Dock = DockStyle.Bottom, Height = 55, Padding = new Padding(12) };
         var install = new Button { Text = "Install Entity", Width = 160, Height = 36, Left = 185, Top = 155 };

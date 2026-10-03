@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "productVersion": "2.22.1",
+  "productVersion": "2.22.2",
   "platform": "win-x64",
   "runtimeVersion": "8.0.31",
   "nugetPackages": [

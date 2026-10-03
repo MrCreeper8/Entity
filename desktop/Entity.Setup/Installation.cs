@@ -7,7 +7,7 @@ namespace Entity.Setup;
 
 public static class Installation
 {
-    public const string Version = "2.22.1";
+    public const string Version = "2.22.2";
     public static string DefaultRoot => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Entity", "app");
     private sealed record FilePin(string Path, string Sha256);
     private sealed record PackageManifest(string Version, string SourceCommit, FilePin[] Files);
