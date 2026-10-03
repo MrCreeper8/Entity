@@ -1,0 +1,2136 @@
+{
+  "schema": 1,
+  "privateSourceCommit": "7640ce86c9ffdedbb3ec60e270db4acd2861bfc3",
+  "sourceState": "clean",
+  "historyCopied": false,
+  "binariesIncluded": false,
+  "runtimePromptPreservedVerbatim": true,
+  "productionBinaryCleanlinessVerified": false,
+  "projection": "remove six private drivers, test mixin, private facts writer, and wall canary; use public network build definitions",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "5949634dc4a9591ae820fab4c010f09841de28ad0302e6f3e104c0bf3e90b117"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "dd162b526bf25df84e4f36722af429c2e4c09c70cdfb79478e8a452a7b392e2e"
+    },
+    {
+      "path": "BINARY-NOTICES.md",
+      "sha256": "ca7b1b7105c968822bc7eb78bb3ac8dc7137229557cc098e1e17ed7382b5a75e"
+    },
+    {
+      "path": "build-identity/Entity2.BuildIdentity.psm1",
+      "sha256": "cf2a5f5327d8e0f7d319e1d361fd407b06643a3eaa05fdfc83aa6b1d22f1c886"
+    },
+    {
+      "path": "build-identity/Generate-Entity2BuildIdentity.ps1",
+      "sha256": "1728fa8f676b937be36b9801bf42e7f434c0e7732c387a25a780c0341ebdf0c3"
+    },
+    {
+      "path": "build-identity/Verify-Entity2BuiltPair.ps1",
+      "sha256": "d4cd3c464b67ccaf1416a0ac2ffd744a0aa0940296871a0cf6b270a408bc5e06"
+    },
+    {
+      "path": "build-identity/version.properties",
+      "sha256": "39351ed83cc03686b5fec3cfe962037fa03dc0a9a37718a009d2c1ecf097a6d9"
+    },
+    {
+      "path": "Build-Source.ps1",
+      "sha256": "98ea0a78d009e019f4f3a2b1326612ac1922c8a65f091312b57593dbf4812da7"
+    },
+    {
+      "path": "Build-Windows.ps1",
+      "sha256": "15cc0d04ca9af15716e67bd81d4d60a077e25df2b295765bebbe419eeedd281a"
+    },
+    {
+      "path": "Copy-BinaryNotices.ps1",
+      "sha256": "499c9c16404bad3d613df37396176254d959de70aeba2f2290ed044740333c7e"
+    },
+    {
+      "path": "core/build.gradle",
+      "sha256": "0bb3198d92615d50c281bbc9abbcd4f2476917abd8de48f43593387dfd37c4fe"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/action/ActionSupervisor.java",
+      "sha256": "19b7400cd543b34b5c62ce6a41ad2c77364258ec408c7c8053a989533ad8a579"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/build/BuildIdentity.java",
+      "sha256": "1cfbda67a70265a6fa7f1820d53d5ecd0ddb045c8a1e5d1524beb2992149669d"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/control/BodyArbiter.java",
+      "sha256": "5b2e512f1be1d037316965c8bc26ea935ee94ce4cab2c345de819aef2c95194f"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/control/BodyChannel.java",
+      "sha256": "be707f4b4aa1a215391e10a487ef191860cb7c5583b04f6a6d3446b87c1df234"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/control/ControlLease.java",
+      "sha256": "9f2cf0b4ffe7595e848ab8a290d23df2346d574dd5968c94770ca149d9ce5e10"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/control/ControlPriority.java",
+      "sha256": "b4d1f97844360f4a93368c1a27ed02e3bb9e18bda12a4fefaa6589a98c16100f"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/EntityCore.java",
+      "sha256": "bd2b70cd47b9ae73342f110f05d3905d715d167a3e807d6f8b988bf7635c0f5a"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/farm/ManagedFarmEconomyPolicy.java",
+      "sha256": "d3a75bbdb8876ed519f92f4ebd12a4832ca271b222a72ef96f17f565b1e8fc70"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/farm/ManagedFarmPolicy.java",
+      "sha256": "7b09b6fe748bbe12bedb6897f4262d25180f04aa7ed95661dafc39aa42140f79"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/model/Mission.java",
+      "sha256": "b29e14249200a3270dac0648a99eea7d11a4df2d724e0ed5d0491e5e781f1193"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/model/MissionState.java",
+      "sha256": "c74a3200b5b28beb60646c18ff7db6b46698eaaa4d7b2c8fb8c37aa4e57d0cff"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/AtomicStoreRecovery.java",
+      "sha256": "bc556fb0e4275f3c03e04f6773c4d99de2888875fbebd5ca68c659b8754f916a"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/JsonMissionStore.java",
+      "sha256": "b03ebf8b5c6e83accec98fa23662d3fd5af44b63d2da4915a74e26efc244533c"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/JsonPlanStore.java",
+      "sha256": "01bbb8251da75b6068b6e8b8b2784d272de0cc59e4512be8f6d158cd269f4d76"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/JsonProtectionSettingsStore.java",
+      "sha256": "23b5f5267fb94035a0f663af3b5e1e6f86d6879dff08765ded716591b4654c3f"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/MissionStore.java",
+      "sha256": "450fceaf07b1c0a75a588a78ed7c4804aaa71f07217288ed01d8eaa99867639c"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/PlanStore.java",
+      "sha256": "8d8158ac6fd62495f634f43bffb7356bbd4d5b8e7b7585f148116543b3fba800"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/persistence/SimpleJson.java",
+      "sha256": "c68c63e7e30782c147655500ae223586c977f8c20b451fd501ec48cd4c2ab5dc"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/plan/PlanFrame.java",
+      "sha256": "bb97de69f76b4e7547596035d1b5635a9f61478811ce84ae01465129fa0a8578"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/plan/PlanFrameState.java",
+      "sha256": "9e8cc8f3db6de3f5a5d5d954923ca5cede73b77399b747727f7811fb78073c93"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/plan/TaskPlan.java",
+      "sha256": "cc8197708878be88acff6985fa60ac7dcd35eba033ecddce21b72e785a76f5fe"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/plan/TaskPlanCoordinator.java",
+      "sha256": "e99fae1e16bf6f7de4c7da413d01b09ebd7d94f9231aaf03d7620740fa022278"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/plan/TaskPlanState.java",
+      "sha256": "0e8b53f26b6372827004e84752f420b5f2c07727103bbce62971db96cdcec74e"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/port/BaritonePort.java",
+      "sha256": "5227a46a9dc860241795ebea7a3b6d3823e3b4ce511fbf3793a415b553727915"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/port/PlatformPort.java",
+      "sha256": "72492063d2eec3f8e739367f6ca8ec3ec6dcce013aac9bdf97ceb56984565099"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/progress/BlockedReconciliationPolicy.java",
+      "sha256": "0c55ecf86eb48183907d8df4657775b5a9e82ead883ac3d3e748ce91f9cd7073"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/progress/ProgressMonitor.java",
+      "sha256": "b32930d4ea366e9b1dc5f538d9caaa843c6a51f85f21b240eea7b6dc8cbc50a5"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/progress/RetryPolicy.java",
+      "sha256": "830dcde1ddf1ef7b133ee9278b492cd1d4281dc3c16143275adcb1b9a3abb3c2"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/protection/ProtectionPolicy.java",
+      "sha256": "37abd808086e017429e7a967b6fae8da814f3fe74f3ddcc83fba0a2ab437afcb"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/recipe/RecipeDefinition.java",
+      "sha256": "f282424283fdebbfa10ed7532706ef7f769a72ba841705b4adfdb95198c16475"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/recipe/RecipeIngredient.java",
+      "sha256": "1aa01a0f18f167170e5cbe2d43d140f5db28572ca43bff2eada103f994723a7f"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/recipe/RecipeSnapshot.java",
+      "sha256": "8a018836a9f40eb45bfeaf282867743ba85588d84a3baf9a0dfac3bb8fbdfcdd"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/CleanPropertyPolicy.java",
+      "sha256": "139213b69b434709e7f2fdbe05eeed37eb897b78d1b425cb68989d5465425d88"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/EntityDispositionPolicy.java",
+      "sha256": "f7d55a44bf6c55fd7bf0dfcd1a5244ee350a0f553c25e9dca897c6f37943ef4c"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/ForeignItemProvenancePolicy.java",
+      "sha256": "83c504f957ebce3517fe1cf20a91969b7117d1bb55fad8bcd0d587a6d00254bb"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/LivestockStewardshipPolicy.java",
+      "sha256": "ecad63da139694f0d62ba9707cbf0cb260840ece6aa81741e7dbdb3c301e8d0e"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/PropertyCreeperSafetyPolicy.java",
+      "sha256": "d88302d52b910b9f7bb39385c26893f1b436cf5657d68df2e0aaef3e199375c8"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/ProtectedAreaHomePermit.java",
+      "sha256": "ff79d8bf2d39ed71f473522bf4ba8a0e4c56e0d650265a0bc14a6b0c7a24a0a2"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/ProtectedAreaPolicy.java",
+      "sha256": "aeb6c0929ad7d6a6dfa8a9db0c4a1c67ba0aec84bbad5f7a4e65e873d4492203"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/stewardship/ResourceStewardshipPolicy.java",
+      "sha256": "c24e22a72113b3f3b33a37c1bd03d9f5b1b024927a7d384abfbfd84c0d68b2c8"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/survival/IdleFlotationLatch.java",
+      "sha256": "1724abfd4d4aa64e9a0f0f790b1b59283252c48587d09c9b4f31f89f89cf5014"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/survival/SafetyDirective.java",
+      "sha256": "79f20c67b896dce6c03da18d19ce5ea77c75dee1a3a510cb94dfec735f038f89"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/survival/SurvivalAction.java",
+      "sha256": "66c129fbbf146b2a80037d52446ae7fba56b62c8b051ff1db9958c0cf5ab3150"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/survival/SurvivalSupervisor.java",
+      "sha256": "d23742d5dd6c723b06c8b74ec4f4c35a81db6ebea7f62c73aa70f7db0b672c17"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/survival/WorldSnapshot.java",
+      "sha256": "363e6fa72f09461bed2b5fdf2f7d35f06986b598444ebb01bd524bb32982c2dd"
+    },
+    {
+      "path": "core/src/main/java/dev/entity/core/trace/DecisionTrace.java",
+      "sha256": "31a3a195bd22ab86710d5f55d49da96c0a26ec9491057a8adb0215e18973ea48"
+    },
+    {
+      "path": "desktop/Entity.Desktop/AiConfiguration.cs",
+      "sha256": "8041d9667a22114752b757bb7d3266d3e9255eb530a7e1b3fba933fc66ce30eb"
+    },
+    {
+      "path": "desktop/Entity.Desktop/AppSettings.cs",
+      "sha256": "54da2071e0f7de1c8c692c307677354401a89646a7d121e61f1c5cbf59191d42"
+    },
+    {
+      "path": "desktop/Entity.Desktop/Entity.Desktop.csproj",
+      "sha256": "32015ca17783b77259756c824abbb94723bef2ced6ab4f42104256fdd01d1fdf"
+    },
+    {
+      "path": "desktop/Entity.Desktop/LocalServerConsole.cs",
+      "sha256": "cafe94f9676b496ba966cf53c3dc7b736fdc7b8582753a8b8e83393305b6d794"
+    },
+    {
+      "path": "desktop/Entity.Desktop/MainForm.cs",
+      "sha256": "558c8a0f4ae38b7c4935e030206b71f9a866e5195da35aeddadc397d62bdf95d"
+    },
+    {
+      "path": "desktop/Entity.Desktop/MinecraftRuntime.cs",
+      "sha256": "3951ad1a73e265b19a74c698375f3fb9402c9707b2b2670d7a0dc2032b99abd4"
+    },
+    {
+      "path": "desktop/Entity.Desktop/packages.lock.json",
+      "sha256": "4472f4d79bd7e84d448699a47bf0e08e3b8ad70444222aeefb390026d4654de0"
+    },
+    {
+      "path": "desktop/Entity.Desktop/ProcessCustody.cs",
+      "sha256": "ddc757285854b3f0716c040f0678b0d534ede7649e842f0cf154c9519fe263df"
+    },
+    {
+      "path": "desktop/Entity.Desktop/Program.cs",
+      "sha256": "3b5820fbc59ae2d71723436e9dd26ec5e9d17fcbb32f6b3fc3b2df961df70e0e"
+    },
+    {
+      "path": "desktop/Entity.Desktop/SchematicInbox.cs",
+      "sha256": "333a6c0e67dea3b5b4bf13413b820d9227d73d8f3d56f06c539458531623185e"
+    },
+    {
+      "path": "desktop/Entity.Desktop/SecretStore.cs",
+      "sha256": "648f83306b6746c955ef1af35fdfed189b7f564b011e558021f03205aa4de308"
+    },
+    {
+      "path": "desktop/Entity.Desktop/ServerRuntime.cs",
+      "sha256": "99a4682b8fadf5f6dabdec0293dd97cf295669187447673c80e07ca4738f84a9"
+    },
+    {
+      "path": "desktop/Entity.Setup/Entity.Setup.csproj",
+      "sha256": "d1979afe71c625f0b6b4745906fc21834712d7021fbefbcd785c1bad6982a375"
+    },
+    {
+      "path": "desktop/Entity.Setup/Installation.cs",
+      "sha256": "dbb9de9b2c8b4d75f6afad1531e81fe796ab478723ba794fdb90faffdf21aa49"
+    },
+    {
+      "path": "desktop/Entity.Setup/Program.cs",
+      "sha256": "89278b124054254418a9c04074041b84c6560feb6a493fc8d1a84916aba40fce"
+    },
+    {
+      "path": "docs/ai-and-privacy.md",
+      "sha256": "df888648bcd41d14a07cac8818c1ed5b35da20585c5ed2d05e2a7e7c2003a436"
+    },
+    {
+      "path": "docs/building-source.md",
+      "sha256": "05f4b46fc4bed5c4a759b8eafb1a5b6a19d76dbace2d16fb2021e740950acfed"
+    },
+    {
+      "path": "docs/schematics.md",
+      "sha256": "753b1b7ffd0ba7d723cdb34fa27228c34357597e5dc9cefe52a40b1efda94512"
+    },
+    {
+      "path": "entity-client/build.gradle",
+      "sha256": "a3569000f2d2a20a7d578ea51d6cfb05007b6eec462b5a33e3ec0a06e58d252d"
+    },
+    {
+      "path": "entity-client/gradle.properties",
+      "sha256": "c7b94de309e672e6413e07a9a9d79bf79cbf979fc33dae156cbf63aabcc1256b"
+    },
+    {
+      "path": "entity-client/settings.gradle",
+      "sha256": "721f34ba9e027874118c475850f693d668e6c3069a26ddfee56854ff22218980"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/AtomicBlockBreakController.java",
+      "sha256": "b443885c34cf28ce94b4c59003299954ed645f5f5d139ce534dfc2cfe6665509"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/AutonomyExecutor.java",
+      "sha256": "fae6e207cd0f641bb31f93e54d13f234dac44c9986f7b63b36f5eee95d3ed58a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/AutonomySettingsStore.java",
+      "sha256": "c6ab0fd20db80fc604bfb4e01d47e7a39867e88d83f31399c7aed3e42fd43837"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/BlockInteractionRaycaster.java",
+      "sha256": "270f58779a7a538102b194794b7794fd319f2abcb60e72748f0e18c7db886dbf"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/ClientInventoryController.java",
+      "sha256": "a5416361ac95be48b082ae958ecc5961a6b4192bd48505c18496405128e881c6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/collection/ClientGroundItemCollectionController.java",
+      "sha256": "1e0279421741208012f62a022f8ba9f04e04a6eb241d7cc9b4c8bc630629e36d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/collection/ForeignItemClaimClientState.java",
+      "sha256": "61458b49abfc92d0d6b2db5c9ab827a1d26dab833e55cd798c5892575e1a3d7a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/collection/GroundItemCollectionPolicy.java",
+      "sha256": "eb6703a3ead8931561ae8736cf9022752b29673886c757f75f37fd37804b1ed1"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/collection/MinecraftGroundItemAdapter.java",
+      "sha256": "31e2b4d520da1337304485f24e58166fe6d6ff05fa4227bda55ccb673eccd3e5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/DeliveryController.java",
+      "sha256": "c239540e13f3e725fd855355d1040705edb18c4411e2f20f9afbacbda07b504d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/inventory/ExactCleanupDrop.java",
+      "sha256": "e0f406f44cb470e835b1e593e20578cbb643972e73b9491759e343b914ca7303"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/inventory/InventoryReport.java",
+      "sha256": "379243b1881918315954c345cba30045a998e899ca40138f2bfcba0249dad46b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/inventory/InventorySnapshot.java",
+      "sha256": "f599287e727582ae8e6d34ec6a7801427442d607975cde6ae2abe7668ad5fbc3"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/inventory/InventoryTransactionEngine.java",
+      "sha256": "b43702c1890bdf92c7195f7f2f8c20e6afcd6ff3cbe114c92f3bff55e1db5cad"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/MinecraftHomeStorageGeometry.java",
+      "sha256": "0f597ded1f16906bc176de8974eeb042e3bf4db4eaf35eda9ab11b90057ea8b4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/MinecraftPersonalSuppliesAdapter.java",
+      "sha256": "2a41bce05be2e7694df7bfee0fe82da21f89c8d6ed2d281762428befb6ac7e0f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/MinecraftTidyController.java",
+      "sha256": "767217b37d2afec977b987238fd4dc22c5c9f82155a12de8febd692f7be79b8d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/MinecraftTidyDropGeometry.java",
+      "sha256": "2efbeacc27432575206a021f5601c8d0445f315f4e6083ef1ea29cd4aa00458c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AcquisitionPlan.java",
+      "sha256": "518a904a0d058f8b04ee7d7926269a8062ab4a70691ddafdc429382e8f4a743d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AcquisitionRequest.java",
+      "sha256": "46f50baff95074369a7ef4cb3b51d43d614fecd589cfb737bacd86b533d6caad"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicBlockBreakPolicy.java",
+      "sha256": "27484b980fcc1c6ca6c338a7cc80236ab397cf10dfe34c620d2ea6ba858ea40c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicDoorPassageStore.java",
+      "sha256": "b3f4148b13ca82b51d83a9ac393f84296009abbb582aabe912edac50cdd56263"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicFieldKitStore.java",
+      "sha256": "3ecceecb294681a3445753a5065d4d255ea9cdc1706ae68149dff9af708f5402"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicFileCommit.java",
+      "sha256": "7d6d28ff54e02ae811fda5fd3a8395fa6ad848eaa116c1efbc32a04a51af45cc"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicFunctionalRouteStore.java",
+      "sha256": "b88a9369067c371996f8d193ebe5d3fb6bc159ed5e781d80bd81621ea958231b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicHomeEconomyStore.java",
+      "sha256": "7b6276bd333aadec392255d352a902662904f33a038c6e807f3e10d7b0a7752a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AtomicHomeWaterFillStore.java",
+      "sha256": "caab33875f5b025a90313ae20f802445a89d947274179e59362fd1083d253643"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/AutonomyWatchdogPolicy.java",
+      "sha256": "bb03739fa3021bf7abab18578aed780c31d630bd954c80f8c1d7e1a13776643c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/BatchReservationPolicy.java",
+      "sha256": "e3f5f7c7ff5ec6bc0351304d8ca08f114100905d062bfeacfdf2dd044b02fcf2"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/CombatLoadoutCoordinator.java",
+      "sha256": "05dc56ca8860bedf7bdb714da514adf2cde29601d2907fbb6844c9ca2c2b8bd5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/CombatLoadoutPolicy.java",
+      "sha256": "9181714f98982dd5e1385ba394c3452c482c66b09423140a97c542198ceb25fb"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/CombatMissionLoadoutGate.java",
+      "sha256": "1a321e7657df9e3b091181cb7e704555e6851745657aa4fe19c42918cc01e149"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/CommittedActionFailurePolicy.java",
+      "sha256": "9c1584075ae9f50610385e59393790af886f915cde762b271ff699340f98bc34"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/CraftingIngredientCapacity.java",
+      "sha256": "9bb3212d31c1487b0d4d3828124cf573b87335f80e3414e438aed625eb4a4693"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DeathDropRecoveryPolicy.java",
+      "sha256": "dc0fbb226356220e1bcbde8560b1a9e824664f6c7626cc053ac024a5a21e5872"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DeathReconciliationTokenPolicy.java",
+      "sha256": "6eb1765e70679d37ce852ac989b6c156136219f0305d2d17395e7f86974401ba"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DeliveryPolicy.java",
+      "sha256": "8ec2190ee2d03fc6203f7a9690cc4fca035c1dbd88be1f7adb31fdeeb093da16"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DeliverySuppliesOrder.java",
+      "sha256": "f980bd3cb5946482896e5ba5597e37bbbc04fbdde9e9aceaf0e958165aaf3798"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DimensionRoutePolicy.java",
+      "sha256": "302c62d2c3279c9c831136e0f105ee60afed573aae69c3b493e08639520415ff"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/DoorPassageSession.java",
+      "sha256": "ca4633c992e9eac264cb7bbf7562a115ec813f757f7f902e30bcd320ed6ddbd0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/EmergencyTechniqueReservationPolicy.java",
+      "sha256": "600a0307b880aab94aca0138d33a4b3eb96bd03f246529f58ca52b02ccf44974"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FieldKitAssetPolicy.java",
+      "sha256": "77cac5e31ab2fe8f2d4e1a1f8d4ccc1f4299f61910f9e75670e1af61174f46c7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FieldKitLedger.java",
+      "sha256": "8308fccb5fc0d6989611a6dc6f03b5e6abb54317f35989a15633a9941ebb7253"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FieldKitStore.java",
+      "sha256": "aab87dffad5bb531968071adfdfc569a780e02b636cac123fb6be1d011c8bdc6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FlowerSearchContinuation.java",
+      "sha256": "19f355de45f236a1a7985067191b5dd2348219f59b9dff6b184b9a412363066e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FoodCookingSessionPolicy.java",
+      "sha256": "abdba6c73dadbf889cdb7569a3a24ff9d9afe128a0384e3c6902850c184121d7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FoodFamilyPolicy.java",
+      "sha256": "a6b57965e704c65c72bc222b24363f5d7215088983083a2735abba3c8a5d8024"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FunctionalRouteMemory.java",
+      "sha256": "93483620e50551ba7a316884f10679242f703ce597c949f2f75de4e5b20898ca"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/FurnaceTransactionRecoveryPolicy.java",
+      "sha256": "fa817c7bc0d546fc1b779b522fc8a994668bbbbddf1680a501753c1f71f7f84a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/GatherFirstBatchPolicy.java",
+      "sha256": "34a36e0423c167b65891d5367a94b44b4f4d59932ad2cd305f77c5997c4d2a8d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HarvestToolAccessPolicy.java",
+      "sha256": "51a77b2095a0945803779cda665a85db88b02478408b3f7b3e474b15db472e39"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeAssetLayoutPolicy.java",
+      "sha256": "afc3a45dd056697bd6bb8faeec9b38afe23d568156787537cfa313a0bdbc3443"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeChestIsolationPolicy.java",
+      "sha256": "74f083b2c335ecc854f3bd5349275fe9e17e0496cfacbac9e8f41534ef5ef622"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeControlPolicy.java",
+      "sha256": "e763d167b21870e70d39a992ee1944034010bb7f17e857273b1a0d74118b844f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeEconomyPolicy.java",
+      "sha256": "ba836962aa9e5013bc010042dafc1b5e09c2c549d601689cdd866680cc2eec56"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeEconomySession.java",
+      "sha256": "33b3c4591815eb852c29fa619db16e068b794e2243b059951121b332eea725d6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeEconomyStore.java",
+      "sha256": "38777bbe5a7caff34ad3215dd98fca6dc21627b303ac4cc995f8bc70b22d2633"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeFurnitureAdoptionPolicy.java",
+      "sha256": "70897d72b5e5a91f4aa09bb25a2304c8d7213437f0d3db01b8491d653930064f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeFurnitureBindingPolicy.java",
+      "sha256": "618a4636b6824fdbcd9f4ecc3572b4948771eff0b9ecfd8f511e7083e2b8f331"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeInteriorGeometryProbe.java",
+      "sha256": "4ebdb4ab5b5d7c076e76abe6cb16d4598464fe408c0b7880b1f25a57e45a95a7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeManualRecoveryPolicy.java",
+      "sha256": "ed710dd71e04883e1d6a1085b1cc7e9bd13c5fd07703ff74fcf680e7b4f44662"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeMissionSupplyAllocator.java",
+      "sha256": "5b7a393c52908b51c5010d7308176e03533a510e867905ffc7d89c2916af378f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeMissionSupplyCodec.java",
+      "sha256": "61bd4c0a070d2f3325f67ce664e530263db8deeeac757b5f50ea238a41351f5d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomePinnedScreenPolicy.java",
+      "sha256": "854a5a1021f4eb5e161c5791deed1fc70deb8997154dece43d98683ed4bb75ee"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomePreemptionDrainPolicy.java",
+      "sha256": "fe49edb0abb02305d3d1ca0a0fc80515ae9537bc58a3156ed494a5486f80f81e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeSleepPolicy.java",
+      "sha256": "d9adb790b77d6e0f406c456c9fdfd445539655de772973807f68862a024ecb0c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeStockDemandForecast.java",
+      "sha256": "01a0008a5170a394d4e097f5faf9796ca2ded08c88acda55f8f7d73ace0403af"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeStockPolicy.java",
+      "sha256": "fa8f50ecceb70684f689eb32ec8711a8f6f28a5fcc7aacdaf69cd8fcf979d673"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeStockStatusPolicy.java",
+      "sha256": "fc79ea44a7595bbd335e4a087ca664cf6026a30bccd82fd1ea322d97a53dc53b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeStoreReconciliationPolicy.java",
+      "sha256": "1ac2ce8038df673274a6d039378a5ff5f359a140da200ca6bcfbb1430070eb61"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeThreatShelterPolicy.java",
+      "sha256": "6536323bf595ca224cecbf39a8df52c04f2109adc46b98792b4a180792cade21"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeTransferIntentCodec.java",
+      "sha256": "1e53aa7ee8e457a5108526e261e584a2d1d534f34ebe059e5671115f7d0660c6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeWaterFillPolicy.java",
+      "sha256": "19855a91bd4e9645091b7fe46efa979162c20044610f4cdb85d29f830fe40604"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/HomeWaterFillSession.java",
+      "sha256": "1f5387e1e5a2fa395577365d7a56a9235fa8e59cfb3e504a858ccea9c8a78305"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleSleepFallback.java",
+      "sha256": "1e62c5bd1d4590ac3e4d18f56db87d893c596de50ccaaabf2c6fb695970009b5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleStockCancellation.java",
+      "sha256": "fa02de1615856d1cb452b6a21fbd4e720dedd20478708a3db3a212d9ec5cc0bd"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleStockMiningLimit.java",
+      "sha256": "1359d04944c7c3038cad261fdab4701807cc04aca9421dce363206ded3e8e8e9"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleStockPolicy.java",
+      "sha256": "fcb76071c8261140ca93e66cd9dc989701db3efe685086b4e5a5a70bf53053f5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleStockRouteRecovery.java",
+      "sha256": "b0362acd5f452c738f8245c5ea4942c69222b227fbf96c89252b2531daec5f67"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/IdleStockToolStore.java",
+      "sha256": "50f776c235f6326b253892dbed17cba72f3e79b19b488f66303ab917a8df67d2"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/InventoryCapacityPolicy.java",
+      "sha256": "9dcc65cb3cacd14c68d32310410467245c4db9b2595f1bf51cf89e2b04d645d8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/InventoryCommitProofPolicy.java",
+      "sha256": "a8b6f03ca61c04c3b04b8f116c5cba8a6c6876f58c96aea2ea520a553cd7a69b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/InventoryReservationLedger.java",
+      "sha256": "ae3f8a41cdd0a3241ce1e46c2edd6fbe281701139e98ac5977fa1ebd764b9ec2"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MinecraftHomeInteriorObserver.java",
+      "sha256": "a0ec4c626585dfe03db41b0d13f24dd1a396352ced922c7155b288acfb3b8ba6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MiningEntranceCheckpoint.java",
+      "sha256": "9df82323af19b5006c9ed82429b73276a21e255629ceb33a2a5104e442823b12"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MiningSession.java",
+      "sha256": "cbeab559ab34de4f540810829faacae8dc0766951cf0bcbf55ce642fce1bb04e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MiningSessionPolicy.java",
+      "sha256": "8936ab522e72fb763457d5106db6fad9facaea564c9cd2f5f00eec74d889383b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MiningToolSegmentPolicy.java",
+      "sha256": "309238cf2d9c3b08a018c3f2dc90ee7a1c871ce5603b86db4d70f8f1e2afc828"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MissionDeathRecoveryPolicy.java",
+      "sha256": "50e40d399e04cec67210fdc390e93faba2c5941827a84a85c84356ff95ad8c27"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/MissionRationPolicy.java",
+      "sha256": "ab94244989bc71707daa59d7f8c5482d527fc7c4cb9b121b8340a86dd302c75e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/PersonalSuppliesPolicy.java",
+      "sha256": "886a0cd1149677fa448cd32ac5c0eb86789fa957de2761b4f476567b16f8e770"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/PlanCommitmentPolicy.java",
+      "sha256": "1ee8d2d28d0a7b0160505e64e07498f96b60d16df266ef387cb40c08503f0a6e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/ReservePolicy.java",
+      "sha256": "90c6a137f9b75f9544901d66bfde0ca297bab9704bb6799e3ddd320446339477"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/ResourceCatalog.java",
+      "sha256": "5e487ce63b3bf3b7965e1ee5d62f91856fb9e5af8145ca772bc423e609bdf300"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/ResourcePlanner.java",
+      "sha256": "491407291f06d8e2ec7c4a4ecaf384cf08a3e311b18389a179414c2e89c5c834"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/TacticalCombatPolicy.java",
+      "sha256": "07182fa72a7afb75ab958a69277cf8c2f9a1ac104d78496fe6903382a82ae3b1"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/ThrowawayReservationPolicy.java",
+      "sha256": "2220ef714b9bebed7106b8b1e5eac28bd1d63e388ba2fb0d020cda7f922d2a87"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/TidySession.java",
+      "sha256": "e0dd5d46bf206b68307053b921562590a35f8e23db82b7633d6b20459cc99424"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/TidySettingsStore.java",
+      "sha256": "e029ec294d21d1195cc88395020a93ddaac4dce31f5828184311fa0e5d29d725"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/ToolStrategy.java",
+      "sha256": "18bca4d51a818f412ce03d1ca24b0362bfc619ed522c3f0b369f4e57c3cd055a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/UnavailableHarvestSources.java",
+      "sha256": "cf18b0ff51da9499d4341801273e8c7868d3bcf220bd4d53d7d1480c837e911a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/UniversalAcquisitionCompiler.java",
+      "sha256": "df1812f7a915471f3ccfecd2489204713fdee1c56435f3d5f35ba620e8979606"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/UniversalProgramCodec.java",
+      "sha256": "ced6da2497cb3d67ae75970cfd32ba52beaa112cbdf6c75bc5158ba35e20e0f0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/UniversalProgramCommitment.java",
+      "sha256": "a84a7a7b36ccc1bf141d5679253628ac3c8afda362a421ef85d99cc9e80b56f4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WoodLogFamilyPolicy.java",
+      "sha256": "1b1c3a9f230fc783a85b40ee1d54fbf96e31b35a892c7fd141f1a46283f89e68"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WorkspacePreparationPlanner.java",
+      "sha256": "f69c295287323331f5346f6d1f78355d71f39adf5600e68d66b953e31ce59639"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WorkspaceWorldProbe.java",
+      "sha256": "56666dd167b9fdad89634c3b1e6bbe17a7db481ff59955b639bda727b32dbf84"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WorkstationPlacementConfirmationPolicy.java",
+      "sha256": "90c7d801b106e09171f2e674c26d4934ee52636583370d1f5b62ca434fdf40db"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WorkstationReclaimAccessPlanner.java",
+      "sha256": "41d66b3d2a40a47c06a18ae06a9c2a8feeeef2f5e50110d9da40feb543c8eb91"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/policy/WorkstationReclaimRecoveryPolicy.java",
+      "sha256": "5bd726a8fd99fee3819c02d775aca36b61b6eb7fba11b647f655450c14e48561"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/LoadedResourceClassifier.java",
+      "sha256": "d95ac2ac885f60aa55944bddab272f67bdc66722ea2ff1195069bdff5ba6468c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ManagedFarmIngressPolicy.java",
+      "sha256": "42ce8d00878efa90bddac0c8b3860fa89baf0ccb8320a76bca7205eab64dafab"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/MinecraftResourceObserver.java",
+      "sha256": "9e1fed1c4e85f761b4d46b1e01e5a78caf2b40b0dcd2adabae7a9f1fee9cf6cc"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/MinecraftResourcePerception.java",
+      "sha256": "42c30af2f81a673f7b15d60cae34fa9a9e48dc45d8946573fef18d84ba644090"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ResourceActuationSession.java",
+      "sha256": "44551f5146fbb0962d9410e36f77a12a8e031157373d41db3205a89a2387f08f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ResourceBreakScope.java",
+      "sha256": "a6ed2059e81f0310662d51d5e1a9dab8fe7adbf111e66e37eeaa354990f3e06a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ResourceInteractionReadiness.java",
+      "sha256": "cff716292aa42a957d1b933e25172d4b3458661c05828dd04927b39bcfd61c1e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ResourcePerceptionMemory.java",
+      "sha256": "0d28e868951f4b00b039aa5743bc81b2b1d9eff20f6f6bdb51c9869d9a486593"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/ResourcePerceptionRay.java",
+      "sha256": "19527d5e6d931d2029cd01b920e7a1433031e953943dd8d20c673772e7c2238a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/resource/SupportedFlowerHarvest.java",
+      "sha256": "1f60d5fbe15108654ecabda5667850e15ebad54e270583ec3d1b345ed46f528a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/safety/HazardMemory.java",
+      "sha256": "02f686959b95124a85418b169f1296bede89a808d16af087bfc0cc55b29b97a6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/workspace/ClientWorkspacePreparationController.java",
+      "sha256": "8341fff1198a22269d781761eecbf4cced9c6934a110cdad16a612f49cae697b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/workspace/MinecraftWorkspaceProbe.java",
+      "sha256": "f6ca8a332230de2f1f243385c4c5873bf5bb29101a6dd40d3967b6c7e2764f3a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/autonomy/WorkstationController.java",
+      "sha256": "c77886b33868e817397b07186ae11abfe415ed9690c736c806a51ee6dd4fc11e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/AquaticPursuitDepthPolicy.java",
+      "sha256": "f991e7997cb15fecddf650ef251dfc40c0cd46e0f5b14880a8bf9dcb903cc5d9"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/AquaticRouteCustodyPolicy.java",
+      "sha256": "e755fad40f70529aac086f3fdedb155d8a1ce3bcbd747d38fc2988062ab7c298"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/AquaticRouteEnvironmentPolicy.java",
+      "sha256": "fa19a063e3e6b2a2f895b36daa26e27d12ea27fcdce5e83130042279bcc988e7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/AquaticTravelPolicy.java",
+      "sha256": "ee0fe6441fef39a95cc00f421c26324085cfaf67511bbb9533cd86976e83de62"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/AttackMissionObjective.java",
+      "sha256": "b433ff3e47c88199c8630461eae67fcdc85a3773355a14d574bdba6d0e1cf570"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/BaritoneActuatorScopePolicy.java",
+      "sha256": "c59eab89b5f8e68e9afea996b81b5869331ff65ff82cdad6ff78750c5321fce6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/BaritoneStartPolicy.java",
+      "sha256": "5f7413d48b4f13ac578cd5bf802cbd7fca4c14e988e937dab1c9dd1606c69a5a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/BlockBreakProgressTracker.java",
+      "sha256": "7cede9e8ee3ea11c07e1f53469c66322123e5c94dad32feef7ed3a5a43e2b0e6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/CloseCombatMovementPolicy.java",
+      "sha256": "731382ea64d1de4a8f4c053fa6be1bc5479ec9d4af239420947b2bae5f458da4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/CombatAttackJournal.java",
+      "sha256": "c743638c9900c180db44284abeec9628f08e98eca53b724961de6e0251b575cc"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/CombatEngagementPolicy.java",
+      "sha256": "265a32f12dbec42df2565e780139d4855390a43568733ea067a143694ef17b62"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/CombatRouteHazardPolicy.java",
+      "sha256": "b4170b3f1ba922c78fb20474b65f562d40c4624b1f504bb56d516f2bc330e9fa"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/CreeperTactics.java",
+      "sha256": "77f4c7ec7c0bc090f821866c33371d1200fcd4f72f2f9864a10dbfc33dea9216"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/FabricBaritonePort.java",
+      "sha256": "3416c12eb638fce80bb0222b6eedabb4ab274224723e2d35dd164a858a1a8c23"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/GoalNearXZ.java",
+      "sha256": "3147c5d1b715599f94da4a725cde9d9e4f74a479e6ee492acf10c351f61d12c8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/HuntTargetPolicy.java",
+      "sha256": "7e0707a99f8f0b834a43b67d896a9731db206df1283364254c4d5fc1980647af"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/LandHuntFrontierPolicy.java",
+      "sha256": "cb0cf2b7ee37393a9c7c026c59403414cd19313a0a16c8e1714e74b754d6d1dd"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/MinecraftFunctionalRoutes.java",
+      "sha256": "210d23e175e61e0050f52a3f32ee5d8819e2917c4f91a192125a14b4dd2740e8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/MinecraftLivestockObserver.java",
+      "sha256": "81515cb5e50f99920cc32f7d6ad9df546db45d6e90fe6c005ea2117385055bf8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/MinecraftResourceDescentGuard.java",
+      "sha256": "266b6dbac15fa51f98087fcce148a2d593bf0b5a6248b15e17c2bf369d8ff6b9"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/MiningAccessRecoveryPolicy.java",
+      "sha256": "2d2d1d1fbfc4770e7dbbab6534cb90b96fd8f0ebde124b8c82406f1753b60c26"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/MiningPolicy.java",
+      "sha256": "25514987ea6cfbfd688a497e2640c4cfa674fc1811d221aa40e1e22828ed3e30"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeFailedAscendEdges.java",
+      "sha256": "5ee37dea4607b22b67d03b4f7b4ebc50b5203d26f44d8c539c005fb6e90f0061"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeMiningBuoyancy.java",
+      "sha256": "e2d14cd8fcba4318a357f18ce5849e95487fb3d0449d626a4a58548bbbdb6f4a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativePropertyCosts.java",
+      "sha256": "bdcce866a2590a4857064ca70eb0e107efc3bdf0e4693e9a84ca5b30caa51a63"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeProspectingProcess.java",
+      "sha256": "cff85f7c951c6d3b509fdf1de16c45f48643d2a0b55010c76283eedc308417f7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeRouteInteractionPolicy.java",
+      "sha256": "8677ebb4885c92936a4008b622f7fa67e100740b1285b010b863d1f599b20a49"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeRouteRecoveryProcess.java",
+      "sha256": "81481879d0eb765bfd7e6021c44dee0a3c6b2aef5dc212c5b7c5e85ba10fcded"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/NativeStalledAscendHandoff.java",
+      "sha256": "4a7ef464f0a795eeffd88471bbd3fe17cafcdcef568aea9616c4cdf72fc15933"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ProjectileThreatPolicy.java",
+      "sha256": "04e99f95aeebcdd1e64355f40fde43e8920ab4c2f6ba657f60a916ee8fc899d4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ProtectedRouteProbe.java",
+      "sha256": "692a2f60017653d33b4d89e90e7d70f02724eddd6c517ff7e2338c04dea65ccc"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ProtectionTraversalBudgetScope.java",
+      "sha256": "9372b17c0053507f4b84b9684e1fce6808a0202ede53d8b850bcfa9b80ec249b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/RangedRouteShieldPolicy.java",
+      "sha256": "a070e6861047b32959c99633188cc1f4dfc69af29097d135684eaa771fde372c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ResourceDescentSafetyPolicy.java",
+      "sha256": "0a2b12df0c74384d067b0f0e20113f5e92605d52b996dc88665afdc8d6307d99"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ResourceDescentStep.java",
+      "sha256": "7fe1775a4bc85cf9a7e4d1125fac7357cd3ce38735daf57cf4b03bb522388844"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/RouteMomentumPolicy.java",
+      "sha256": "028784077905108e9247bbc17ff0bedc1f25c2f1760e42c4fe146189e92b7d04"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/RouteMutationPolicy.java",
+      "sha256": "5a03aaf8c5c6c8a8899c8a9b2c3d94d8ad4cd6320048f48d7775eacfa84f5581"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/RouteRecoveryGeometry.java",
+      "sha256": "9ba25d3b2766d00484d43a9bf4b46980b8baaf263ee9d361bdfcbdcfb34f7b12"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/RouteSupportCustody.java",
+      "sha256": "7509219d1e9ec621dd54f6a527dfd06e474f39ffa0bc2fe9763bce85e05822b6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/ScopedResourceRoutePolicy.java",
+      "sha256": "43cd3bb27666d05bc618abcbebb07e31e864abd6f7dc970007e1c6e8ce985c56"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/SealedShieldStartPolicy.java",
+      "sha256": "20902f84524cae2c0b95b4ef3e04402139d7fbf9c3cb0e96eac08c6a94fd4c40"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/StableInteractionTargetSession.java",
+      "sha256": "0c26d5dc1b2963a13ec25f8e9d5a6bf39b2c56230994b08b64f767de98adbe24"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/TraversalWatchdog.java",
+      "sha256": "2f1d25e308f516303f7b388ebcc349e1bc43f4371b94fa70c40f1854fa0ac2d1"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/VisiblePlayerPursuitPolicy.java",
+      "sha256": "3bf8c1a24b730047849f42c3246a6bfb3f7b26ea4c21a3e6eb3ccb5b454083ac"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/baritone/WaypointReplanPolicy.java",
+      "sha256": "af8afd7d6923243228a4da310eeda8e1c1e00d2a836766a7edbd444eb826aba0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintBuildScope.java",
+      "sha256": "f7161b2bce632b9b5183373116564077b53b410ce96dae8f3f14154d82ffce62"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintBuildSession.java",
+      "sha256": "79e47e97612a8ea68b46893f7b4be83835c827c13e0e7315f361a5623d6be1a3"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintBundledLibrary.java",
+      "sha256": "4f55ba0689bdce6ab7ac55e1b1baee58a365cc97db0bb90535cda90866c9b757"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintCatalog.java",
+      "sha256": "c700586c012146be274be0300a3f8c04de0d6b2a71546802dc70df3467b06657"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintDesign.java",
+      "sha256": "cb1e2a7e34944a999cbfac8c4933a619fc7148f31f2f1fa67f92a1c7ae49940a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintDoorMaterials.java",
+      "sha256": "94a0d515039e2c109c04451dd535331ffe1290b3ea586e1af49460b67fb3ad0f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintImport.java",
+      "sha256": "7c595db8a2d2277a900a2c7864442090ab2cb23a22177bf7cdb553a2c92b627f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintMaterialSupplyPolicy.java",
+      "sha256": "308cb3af957b63b697a7374a2e3abf92cbd91735c6c83355f3a9023df2ea7f05"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintProject.java",
+      "sha256": "3dd894e6847e380bb3eb279133bdf75128faaef07fc72f1c6e4e1e0aa572a79a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintProjects.java",
+      "sha256": "8b08c366200f7b3d634440a8026e3795592639060eefbb759442be1fadc07c51"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintSupportLedger.java",
+      "sha256": "e83ce4c98f922de2001ef193b3aeb7be389b235dc4dfc46f6610cd9358662a3e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/BlueprintTerrainStates.java",
+      "sha256": "8f94ea5a9f08df707f2254489f9434b218546bd56c366f1bb95514778dfa46bd"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/blueprint/LocalBlueprintInbox.java",
+      "sha256": "6917cbcf2606e6b119289f4472fbc05d31070132c33178cc0248096a26abf175"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/BridgeBuildIdentity.java",
+      "sha256": "6e218c435647553bb493d33765ac2413cd959f3b64191197fcc17e9bfe82e53f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/BridgeClient.java",
+      "sha256": "7583e4f550c6efe3af45f2c269f460c3e278d10a9a0d2eebf2605036d4bf3318"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/BridgeClientHandshakeState.java",
+      "sha256": "de4ca87985dad55037a104030859b6aea32e762c7d1be1b8892746885b14201c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/BridgeResultPolicy.java",
+      "sha256": "65aa21221e2aaa3f699b0393146a3fd39532439d8a5f5d7b8a20045bd0211468"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/BridgeWorldIdentities.java",
+      "sha256": "59d3b6f2712a41429d1e19cc167614408c278c2d81f8c647c3e0d6b105553094"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/DeliveryProtocol.java",
+      "sha256": "67fa9ca70416fe36470a9dbacfd3220093e0d79456ac1bf88b5845fb77c7e307"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/EntityRelationshipPolicyProtocol.java",
+      "sha256": "c5c5be02498af6e4035a2b711826bbaffc2793c38c9104ff8e0708a98e5549e0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/ForeignItemClaimProtocol.java",
+      "sha256": "13e9cdc5c9f5e57bac958f41885da6278a8a47121dcc3bfeaeeffb5c5ff7d568"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/FrameCodec.java",
+      "sha256": "34d27ed9ae84c726e40b798e777b05834d4d739b68b8b336d5cd4d2807babb13"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/ProtectedAreaPolicyProtocol.java",
+      "sha256": "6509d7fb2d610d6ea6d05254eff44fce8f2b3c8640210b46cecb2013a4777125"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/ServerAttackerResetEvent.java",
+      "sha256": "f86794282c26643c33310b011eda5b0ab5bc62d198a79e9f4e4a9b0e266709db"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/ServerDamageEvent.java",
+      "sha256": "f34839a2d3b98069fb10d23b06f2747e3f6dffd14a701aa01bbf7a5e7463ab70"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/ServerThreatTargetEvent.java",
+      "sha256": "a4607cdb4806bbf2d2dde9f0ca7e0eae273f1138cace8bc5a2139b82ddcf26e5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/bridge/TechniqueCapabilityFrames.java",
+      "sha256": "24bc5917f1a825064be11872fd9353e6da328f83cca2073c2b04b43602abc1ec"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/command/CommandTranslator.java",
+      "sha256": "01b36fd48b89b0f8416324ea492f456f2757b480684f9240402f5d3a7dd52513"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/command/IncomingCommand.java",
+      "sha256": "051ee0767dae3a8679f9eb7f70bfe56c8734c01e894ce7b835393e6e93d4599c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/config/EntityClientConfig.java",
+      "sha256": "0eaa049b2e8a55020729554bce5c56e34272a6b23e5f1bc521f257be56c6301c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/ActionLease.java",
+      "sha256": "59e016ac81e5faba3c822b22c31d810bf3901bc210a39bd4ec0780ac03e81683"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/ActionOwner.java",
+      "sha256": "53145a396fcbc6f01203e4a24d98103e02592269c8f0d89a9d7afcba27e68cfc"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/DirectBlockBreakLease.java",
+      "sha256": "99ea201ac96fc335a6767bc4b2047bbdbaf4c231a3546d6064bc8a6244ea882f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/DirectBodyController.java",
+      "sha256": "551b0a39c10fc4f5699375246fad7f104904be078ecc45c8b5a02e176b2fb07f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/DirectUseLease.java",
+      "sha256": "4cd09807cbc685e783366eca0d16026e5c863d9d7e95d7e4cb2212309b56b8d6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/ExecutionKernel.java",
+      "sha256": "62472242ff782b4dc78c619798f1e21650aa2cc682fe80b681ee7d181c139980"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/FireEscapePlanner.java",
+      "sha256": "38e46f79d5aa76543ab4a7d46b7355ca5c7a39e2a3b2baeacba9cb49a28229f5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/GridEscapePlanner.java",
+      "sha256": "a2d8e5a0facc4eaf6098ef43dda5ca4c180e37bb47ceea7b20d0564afcca8707"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/LavaEscapePlanner.java",
+      "sha256": "d9a473be5197d8f8e7a1c954d82506d04e08de5ae0591010034e3db5801c8eee"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MinecraftActuatorGateway.java",
+      "sha256": "6ca06197fc430d0b259e3fb7a1afefe45a713ec17c48ea94994cddd00dbec373"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MinecraftEntityAttackGateway.java",
+      "sha256": "62da3b37627d787d9db13ecc29ded2910bad6db4fd58365491bfce92ee86f5d1"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MinecraftMovementGateway.java",
+      "sha256": "ae9a4a1afba034fd3696d589ff24d87e0e6e864664500d5036ac1ad359c1fbaf"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MovementFrame.java",
+      "sha256": "5e6a5fe0961cc00997bfd25be347ed486ba9da2fbca53ec96ddff2f51ca90128"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MovementFrameActuator.java",
+      "sha256": "db01c411401741e52bd7b613496f0d2aa4951e5f401b1b6471222e2fca281c1e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/MovementInputSnapshot.java",
+      "sha256": "1e432fbfb794f031fca680ea7e1883063d03e6315ecd1e10e88a8e4655f90a2f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/control/PlanarProgressGeometry.java",
+      "sha256": "f3ff3e1cade3266a81fc1864587c7679d224fe685148a3dd399ede03ed01937f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/EntityClientMod.java",
+      "sha256": "7501370ca7842a69f4eb6d823561565c4f31ca316dd7c14d8164c12ce5a036f8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneBuildDiagonalMixin.java",
+      "sha256": "467fd17ea4f38d8b8ea6ea580c99620905fd41303de9623f038554637bd46d6c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneBuilderMaterialsMixin.java",
+      "sha256": "5e8a8e71701dacbec92679784518beaeefb13651eb9b62cd73670c9033d26fa4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneCalculationOwnerAccessor.java",
+      "sha256": "4fc65741b6bf28b5bbf16e6107e2b45f4856918cb8baf36f6643ab7cc1836cda"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneFailedAscendCostMixin.java",
+      "sha256": "8c6d950413cbaa8dea6b06ffe7da0f1beacc437e422bae4b561b6fd2ef6dd6c5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneFailedAscendOwnerMixin.java",
+      "sha256": "6cd69c38b039a6256b9e664d1892d8f1432fdb62655c4235de19937c8bc0a899"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneMiningBuoyancyMixin.java",
+      "sha256": "fee5832f59923c339adb3ef940424d24e6c51d9e4f34d215e84e4ff5d80b876c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritonePropertyCostMixin.java",
+      "sha256": "2a5ee692980872a58bd96c8b4a1906162a13dc3bae9fe32835151d3fb2a8ea6e"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneResourceDescentCostMixin.java",
+      "sha256": "58351dbb74479dcc726931b75590d339147aa1d025c1de63143c9484a681c827"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneResourceDescentOwnerMixin.java",
+      "sha256": "d23b441411085838a90ee75eea3602ce8843ce5f80dc86bf5f98496fc37ec4b1"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BaritoneStairBridgeMixin.java",
+      "sha256": "bce694e8d1d6b74a49984d99f6a561b5ec49f9c19194461c2bd510d2102aec91"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/BlockItemPlacementInvoker.java",
+      "sha256": "194f1161729ff88a691c8440f7f2171aa7bdc1583ff9cd0660262f31dec30126"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/ClientPlayerInputMixin.java",
+      "sha256": "6598281069db453fd69d4ee44a943dcec5a607247e4ccc124adc679da28ba338"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/ClientPlayerInteractionManagerMixin.java",
+      "sha256": "a5e85f45015b38e57c5862f493f919fa9770db0112d82e816440ef72705f1e9c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/InputAccessor.java",
+      "sha256": "b148eb563cb3de8d911a2e646e66a3cea914e871255fcb31ec32ff6f47abd1a3"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/MinecraftClientLifecycleMixin.java",
+      "sha256": "4db4455ba355fbedc4bd82fd74d1b51b3682b5fa62f9f81a5a38923c7bf2cee8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/MinecraftClientMixin.java",
+      "sha256": "03c739e59bd17805ceaf9f96bb4a3df94aee7beba1134e8ccd8748ac1221234c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/MouseMixin.java",
+      "sha256": "f78c3c0e62c216d7858c2cccad074b534c9bb6c6c2e50b7a378524cd37243bfa"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/mixin/WindowMixin.java",
+      "sha256": "00f30f5f307653bc9364f9ac463cca41ced2e1f56ad371c785ec64b3bf4eb123"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/platform/FabricPlatformPort.java",
+      "sha256": "2caf8b0845b931ac455b7d846dbf5a1b8754143d1ed6d56d4cae955562345a8c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/AuthoritativeThreatLedger.java",
+      "sha256": "d998d4282f54a0ee6034f9e3059f273f36d2710c44c8a822812b4dc7f52ea07b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/CombatTargetResolutionWatchdog.java",
+      "sha256": "df008ff2a2494d4ddbd6ee257889f77555d7c326d7116de0bf8e93bf35661177"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/CombatTargetSession.java",
+      "sha256": "3839a720f439ec46bc1d1e3917998fb87485c7cdfa8b62e3a050b979fd4dd48f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/DistantThreatArbitrationView.java",
+      "sha256": "0cbbe2a2af2f2993ae44606812da97dbd506ea840cf783fcf0cc03c119eb3748"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/DistantThreatDisengagementPolicy.java",
+      "sha256": "07a767e924a11dda8dc872f95e389faaca9fc60982c030b5d2dc03270e21ee9a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/DistantThreatEpisodeRetention.java",
+      "sha256": "3f156b6ddebe695d4ef0e4ea8391a32d73ceab2c256a100a3c3ab786ded24e81"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/DistantThreatObservationFactory.java",
+      "sha256": "0b66ebf8c0434290d48347d605a489a69c64234c457160a3f32a32f8a869665a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/MinecraftHomeThreatShelterBoundary.java",
+      "sha256": "8d0f78f47c2aa3538c59d3b1a078552081fbe79934175bf4581023c9e74999ad"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/MinecraftPropertyCreeperBoundary.java",
+      "sha256": "184fe8e68503ba27e8fbeb6d8d64c3a608ba3f9f5ea74912736ff7a2c20b2d51"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ProtectedAreaClientState.java",
+      "sha256": "f9ca91758a61ff3a0bcc776d276a528b53e0c2d61fb52653840b3ed28c318d13"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ProtectedAreaClientStore.java",
+      "sha256": "c7b29615547944bb0083945c3401fe7486d1cc8b6ccb32ac779172484d73fb7a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ProtectionArbitrationView.java",
+      "sha256": "a5547f8b09a9dfc445db1813e0459d458c304f8d34229f47ed8389047596fde5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ProtectionReactivationHandoff.java",
+      "sha256": "80e21a9fa6ed9a3ef6f2e4bb3887994a187f1f35c7f5fcbfc688aac45f51d22c"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ProtectionTargetSelector.java",
+      "sha256": "e0f0f2463b75bbceb2baf2225e68b03a02b8e661eb9ffe0cbdb7a28c7b0eab2d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/SealedCombatResolutionSession.java",
+      "sha256": "5dd9191269cf3f12f8a841f10be4288ae1164c1cb319aecbb6792f9c38dc9345"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/SoleTargetSuppressionSession.java",
+      "sha256": "eac097f9f7605c911515bae4db0f4b5b6d59c12e646b15f2acb98548b85c8a2a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/TacticalProtectionPlan.java",
+      "sha256": "58bbc7a0813748284a852933eb8376f8e88812512854e0387693f2d647ad8113"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/ThreatEvidenceSources.java",
+      "sha256": "9eb65cfcd580b4cc7dc85574807ed0a0192efbf140ad743c3b04a16de630f247"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/protection/VisibleRangedPressurePolicy.java",
+      "sha256": "e4da1c30f8550d2ca5f24380a0bda640a59bfa7efd76426a34b02909c839b060"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/recipe/MinecraftRecipeDisplayDecoder.java",
+      "sha256": "f8196dc7c0fc543bf5e642588091bb5bdcac8f4947312a349eb655f0548e1ab5"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/recipe/MinecraftRecipeSnapshotAdapter.java",
+      "sha256": "adfe057296fe268eefc0ae4538ed5b9e575df4a33bae8eb0b2f0a25f52624755"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/recipe/MinecraftRecipeSnapshotService.java",
+      "sha256": "651ef6205ac79ee376a0227ee48096f67723af428a550f4fb448caeb2e2ade7b"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/recipe/PaperRecipeCatalogAssembler.java",
+      "sha256": "84ba335493b05ea97accc788837e893c933c69c4df77c39a7b6bd43bbf45dcf4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/recipe/PaperRecipeDiscoveryRetry.java",
+      "sha256": "5fc165f5d6f503f207892cc0b6f11762f41f819e1fb6d8f002d181db5ea63816"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/AquaticSafetyMissionHandoff.java",
+      "sha256": "8e039378ea9387a7aa1691ba29980b12ced78386794d6121596b68bc62854ded"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/ControllerTelemetryProjection.java",
+      "sha256": "ad7389485e515e55f8576211ad1c936460c12d140c0d693eeb9c13502bbb3170"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/DeathLoopGuard.java",
+      "sha256": "e0e8dd4a0d9b0f18e817e16bf845e5e948c003b7807410200bc4281a92d5cb1d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/DeathLoopRecoveryStore.java",
+      "sha256": "58750c298acacb07c30c68868a460928e7f317098fc5544bf886ba39f25e4d7f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/DeathRecoveryLifecyclePolicy.java",
+      "sha256": "c51c02a11ae4358e5f2f190b41d1536fe3d5211024b4194ac27663a8685bebdb"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/EntityRuntime.java",
+      "sha256": "5fe58a04f3f7a74f197c3e83dd669610c1fd8841f0629c1306f4528bb890db5d"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/ExecutionFailurePolicy.java",
+      "sha256": "f7347a7483a8c483d0878609a5922321160c1b754190c2d802417831bc2f82bb"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/ExplicitSleepContinuation.java",
+      "sha256": "fe843aec29c62709dc565c632141a3be27a711719531ab63aa29b03c5443ee74"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/FiniteStockCommands.java",
+      "sha256": "944dda0701c30c97c07275edb154ca486a8da5c1af80f064364d794e02289bbe"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/GlfwWindowBridge.java",
+      "sha256": "377f7605490bd99176b33320f811db4069aa301eb5575f49981d5406a2139aca"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/HeadlessRuntimeController.java",
+      "sha256": "2295775e8de8c8d9cfc4f3282cf80cd4485770547ee31153868de9ee73943626"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/HeadlessRuntimeMode.java",
+      "sha256": "bb06e37cc0197b78a242ae391977e2efc2f8850a1cc6a4c26f7a3f54766279a7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/HomeMutationAdmission.java",
+      "sha256": "3f8ae747e523fa12f833856f452d66c26d824343b14cc880f7075f81925f0dac"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/IdleContext.java",
+      "sha256": "c949974903aa8ed61e648eb3bc01da0eb2d3b88661fa70d2fcc8b0b4c3f0f192"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/IdleSettingsStore.java",
+      "sha256": "e65743dc9be9a621dac86fd261a6a4fac410f8bd8d60160a27fcf346cf61005a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/IdleWorkCoordinator.java",
+      "sha256": "6cffff15d797cc565507fe6183d44f19ef7b7601733a60a51b440fd165fb07f4"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/ManagedFarmAutomationStore.java",
+      "sha256": "fae7468e092e4affe6436765e9fe3c64b19192bb44f2cba53d822495dc24a0a8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/MissionCargoCompletionFence.java",
+      "sha256": "47c0a753cc5573718f0f568ad8bb9281a63039a8d0d6d0e5285a7a1ad81d541f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/MissionSyncSnapshot.java",
+      "sha256": "329c805f684328f17bcfd6e91d40e4b7ea189c2f19e21acbe3e67c7d9f055d94"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/OperatorStopLatch.java",
+      "sha256": "6ad84563a68de1179def8989ee091bafbe11d25a5d6d2d026bed2ce0395a9113"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/PerceptionModeControl.java",
+      "sha256": "bdeaa6cb5a621a40ffc4565f208408f999cd8a6082efbceccfe81d8fce2fbc43"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/PerceptionSettingsStore.java",
+      "sha256": "01d25a56f6c378254a5f986c158b14a09415e9677516231408e17e30ebc85935"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/ProtectionActivityClassifier.java",
+      "sha256": "40ca0434b0127cae981b5be897f5151820491808d2e48da7b10b69b62d9792fa"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/RespawnCoordinator.java",
+      "sha256": "ef1081cf81f82b32eab962ca9c194c793b15504a7bdadc2f510a92569c11be28"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/StandardProtectionExecutionFailurePolicy.java",
+      "sha256": "e0602f55558ac842482bcf3c67b08a3e68a6094432c79b9d9c3fe428b67a4b50"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/WorldScopeGate.java",
+      "sha256": "289945eee511cb09bb0c4eef4e7ed0ebc15966883c4c63f1917c9234f1471848"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/WorldStateBindingStore.java",
+      "sha256": "64198e269a34541fff55fed3bcf29633aedc47a0c83132b1916c4c1a29170475"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/runtime/WorldStateScope.java",
+      "sha256": "79df39dbadc7e299162d18f2495fcf16ecbe1dec5c85d59ead9511f9f0204e41"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/technique/FallTechniqueGeometryPolicy.java",
+      "sha256": "7c19187755b3cf0ab8581330a122a23c0d46185612562a0477e22633ef3b49ea"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/technique/InventoryTechniquePolicy.java",
+      "sha256": "24a6b65843c8c11f44d4354591613745a496dbe8967e5dcfee85c180cb81aba0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/technique/MinecraftFallTechniqueObserver.java",
+      "sha256": "6ed73b4b0bdcd48a3ab59eb643156d2454d545fc867aa449c222b72844c26d1a"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/technique/WaterClutchSession.java",
+      "sha256": "f37e9c020e9650d37f3f8d58210d8e21e65a89b86fa87a25cb7ee79e8fcb04a6"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/BehaviorCircuitBreaker.java",
+      "sha256": "3ff49ab6f045382affdfea8e187b308fb964d394d46b7150283e1e1a040df08f"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/BehaviorInvariantMonitor.java",
+      "sha256": "da71bcb08f2cf096d958c5b0977dd47a48cd5319aeee5fdb9d596e8d7737c0b8"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/BlackBoxFrames.java",
+      "sha256": "6fdafa2d30c87d53da48a9df4c3a6423eee97249281d00e52fe527f65711cd60"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/BlackBoxRecorder.java",
+      "sha256": "669abdea9445fdc43a0e86042aded808b9a81b891f770e89010096d7a9365d95"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/CriticalBlackBoxEvents.java",
+      "sha256": "04f18b411010aafea17c60032eb5fdb8251c1145e35bbf748f82858e1f9d91c7"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/DecisionJournal.java",
+      "sha256": "c69b7042d79bf8752432574c8d42a21fe7e28a9455767a723490024edcd9c9e0"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/MissionStatusReporter.java",
+      "sha256": "2b1fad8693a3d8c329d33a018ca7dde0b8f97c45cf3d6ae402d6747ee66d4baf"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/TelemetryFrames.java",
+      "sha256": "f5c768f9ec9b8f662ed2c2791199f58ae6c1dcee1bbcdca58f0215b69ccafc13"
+    },
+    {
+      "path": "entity-client/src/main/java/dev/entity/client/telemetry/WorldObservationFrame.java",
+      "sha256": "32943a3a1e5582c8939566cee4fb46af8b22099c45c8fa668ab827d80166221c"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2.mixins.json",
+      "sha256": "fa67a9c78b797a74bf1d22f0ad25800eafff9eae220c7bec4affb6823bada222"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/chicken-coop.schem",
+      "sha256": "1adb7e53a55c59cb267385ab8cf518b9094f8807113f8ea77dbe2b7eacc38a77"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/dark-watch-tower.schem",
+      "sha256": "6ddf28390156d18b3e6c81c26fbd12a3726495c866dd25f621dfea1bfd8363cf"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/desert-house.schem",
+      "sha256": "51d84ed7429bde6699e85a25a4f292e999824fc45706e5c85882aada9deed0d7"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/hobbit-house.schem",
+      "sha256": "1caa49b1f1365b1be83ae65407b019e16e0b604f2348f80f9520f653d4dd2aee"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/large-barn.schem",
+      "sha256": "cfd9bec0d93efd4600b76d30140d1b2a93ae73d82643843fc7da22f7ab156084"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/LICENSE.txt",
+      "sha256": "4d580922b445264fcb96298721eb9283c86b2387e9bfcccceb95ae268bb0cfdc"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/manifest.json",
+      "sha256": "2c28a3576de06527e8940dbaf2531457280e235339bb90a4c9ffd1f0d941ad63"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/mine-entrance.schem",
+      "sha256": "561bfc8ac897114136d42c6bd51cbd96ffe5e1ea49fed721c46fb63eea6fce38"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/barn_advanced.gz",
+      "sha256": "e2a32a193699d23e6050501ae4c95c9ccd36889312230feb6b610b0ae1116128"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/chicken_coop.gz",
+      "sha256": "e2fa02f13c36b0bd4821b0d9f78e50c1eb936ca9067ac1a4e6697014d52b0e23"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/house_desert.gz",
+      "sha256": "ffe0c6ace9ffc53331ccc84d32008575fcadb66837ebb4638063a8d5634dfd4d"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/house_hobbit.gz",
+      "sha256": "04da624b850f811dc7e81fd7f1815efccc87a3373c855b64ab3bc9fcc3b1d916"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/house_snow.gz",
+      "sha256": "6f2dbd1bb3f1cf2471d7c0c69de7b51b6d9701286d58d7f4cf375be516c77f50"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/house_tree.gz",
+      "sha256": "0176340daf0448665735d2858c8fceb8430311b52861e6736ddcdeed8060a63a"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/instant_bridge.gz",
+      "sha256": "4ce9c647ce0cc92cec32da0edfeabea9122bdac0f06862cc6bdd2f7e3b0f9344"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/mineshaft_entrance.gz",
+      "sha256": "8a06d5c284a6e80b212af6d9147d67a3ee81de9a5bb8e991e7b68bea83a24566"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/rabbit_hutch.gz",
+      "sha256": "e0bf3715c8bdc9ea5ddd0c4669931ae700a8557ff40dcb22409e098fd605def9"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/watch_tower_dark.gz",
+      "sha256": "08833f707108b57fd32083c3dcbe0ec641232dbaa974f1608c9116945445d0a3"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/originals/watch_tower.gz",
+      "sha256": "9a108eebd53544227d4cde235dfe85cd25d3f3f0e5fb6b2234e64870585addc4"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/rabbit-hutch.schem",
+      "sha256": "bc6acc4ddd9f871240d4f51308753535d6f2d1bb9740ee3c3358a97f0165c5df"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/small-bridge.schem",
+      "sha256": "2eb3573108d219998bc8ccfd86b2493b98d090cf6ffb00170bbf6dfb6bd85255"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/snow-house.schem",
+      "sha256": "8086143c4716ed5ce5595475e4e4dc8e807f7934729437fb40fbef821537518d"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/tree-house.schem",
+      "sha256": "baa3e57c94b80abb020aa53ba5b8c0c8d8efb5048ca02e84fbc7a7f7a97282cb"
+    },
+    {
+      "path": "entity-client/src/main/resources/entity2/blueprints/prefab/watch-tower.schem",
+      "sha256": "6163de8bd521cdd9a3315a90f13aae2c8323e368d18005a8d167682c63b4112d"
+    },
+    {
+      "path": "entity-client/src/main/resources/fabric.mod.json",
+      "sha256": "0ee1fe3889e9759cec02593facd3d368783f6e6ff5683bccf5e16f27735a9a36"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e5d3556902001d922555653cfa00ee7c35ba1ba066b48514e49a985f5fcc5433"
+    },
+    {
+      "path": "licenses/Baritone-1.15.0-LGPL-3.0.txt",
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+    },
+    {
+      "path": "licenses/CmlLib.Core-4.0.6-LICENSE.txt",
+      "sha256": "d67622c23e5c980df485d1b1667a52c49f28fc73130c11d02f44a10be6ce9d7d"
+    },
+    {
+      "path": "licenses/CmlLib.Core.Commons-4.0.0-LICENSE.txt",
+      "sha256": "a121c8933c2f037d351c25cdb6fe8af768c7a6fd824da88f237b86b547de2f84"
+    },
+    {
+      "path": "licenses/DotnetRuntime-8.0.31-LICENSE.txt",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/DotnetRuntime-8.0.31-THIRD-PARTY-NOTICES.txt",
+      "sha256": "97c1a7b3da6a4c6ad516448719f45114b41a4d4c5aa300a944476e2e4f5da438"
+    },
+    {
+      "path": "licenses/downloaded-mod-inventory.json",
+      "sha256": "b71b837b7eab38144c38b5e31bb3b547d471336ae48abc14e4d7dfad794a6762"
+    },
+    {
+      "path": "licenses/Fabric-API-0.129.0+1.21.8-LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    },
+    {
+      "path": "licenses/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "licenses/inventory.json",
+      "sha256": "4782385f81a22fc09a29dc67f6d81d083f8489e80d5134c3a6d14c9e1c7ab613"
+    },
+    {
+      "path": "licenses/LZMA-SDK-19.0.0-LICENSE.txt",
+      "sha256": "e06705ab073ae88d10f9bf94e134ccce54780ccca5886859c40b177212030f9c"
+    },
+    {
+      "path": "licenses/Prefab-MIT.txt",
+      "sha256": "4d580922b445264fcb96298721eb9283c86b2387e9bfcccceb95ae268bb0cfdc"
+    },
+    {
+      "path": "licenses/runtime-pack-provenance.json",
+      "sha256": "07c16aa79bb960029fc8ff1915d2a363762bedd03900ef90cac438f02a8c091c"
+    },
+    {
+      "path": "licenses/SHA256SUMS",
+      "sha256": "605e286b929f740f0f5675e969829f3ea4c52271f563561180067d9f768d42ae"
+    },
+    {
+      "path": "licenses/SharpZipLib-1.4.2-LICENSE.txt",
+      "sha256": "d7fbbc16f871bf24fa5624c7eaf945054b778985f32676dcacba41fddca61133"
+    },
+    {
+      "path": "licenses/system.management-8.0.0-LICENSE.TXT",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/system.management-8.0.0-THIRD-PARTY-NOTICES.TXT",
+      "sha256": "7238e7fd468427aa3fe45b1d0cee1c3e2d93ff96692820768521e9780225d473"
+    },
+    {
+      "path": "licenses/system.text.json-8.0.5-LICENSE.TXT",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/system.text.json-8.0.5-THIRD-PARTY-NOTICES.TXT",
+      "sha256": "97c1a7b3da6a4c6ad516448719f45114b41a4d4c5aa300a944476e2e4f5da438"
+    },
+    {
+      "path": "licenses/system.threading.tasks.dataflow-8.0.1-LICENSE.TXT",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/system.threading.tasks.dataflow-8.0.1-THIRD-PARTY-NOTICES.TXT",
+      "sha256": "97c1a7b3da6a4c6ad516448719f45114b41a4d4c5aa300a944476e2e4f5da438"
+    },
+    {
+      "path": "licenses/WindowsForms-8.0.31-LICENSE.txt",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/WindowsForms-8.0.31-THIRD-PARTY-NOTICES.txt",
+      "sha256": "44e01533fee526d958da12cf354d15d87367edfb97ea2e8654c5982422597893"
+    },
+    {
+      "path": "licenses/WPF-8.0.31-LICENSE.txt",
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310"
+    },
+    {
+      "path": "licenses/WPF-8.0.31-THIRD-PARTY-NOTICES.txt",
+      "sha256": "d23dba2fee20c6b59d8f7088ee9ed372459c952a319b7ca90f3eec370cc76eb9"
+    },
+    {
+      "path": "local-ai/pinned-runtime.json",
+      "sha256": "7038cd8559357290c596991681150c64da935eb822cc7949d9db363978e57bf8"
+    },
+    {
+      "path": "local-ai/Setup-LocalAi.ps1",
+      "sha256": "ee5a06baf23f7e7ea2c83d0b8ab7ad2ec974225d685343aed4aef6fff08c8e91"
+    },
+    {
+      "path": "README.md",
+      "sha256": "18f07268c35399dc6c702f2d629024199c34062bbf3c2a9d80dd492e3b3a890a"
+    },
+    {
+      "path": "server-plugin/build.gradle.kts",
+      "sha256": "d02c9f1bfed9cb6f43d9cea10cb5b2d8bf6b7514b71979d04beea4a9be7d5251"
+    },
+    {
+      "path": "server-plugin/gradle.properties",
+      "sha256": "159cf4153da92fceb74defc6a14f4ec66568ffd45cbf4fa80f8082226d433cca"
+    },
+    {
+      "path": "server-plugin/settings.gradle.kts",
+      "sha256": "b1de6d95bde691abbd0c293cdf6fd9ad4efea5234b098acd54ead37bec5b83be"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiAbilityCatalog.java",
+      "sha256": "c455cfa220c348d198d103ae2be88c6e7bbf8c93f33e218fccfaea2ff0b8eb81"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiBackendFactory.java",
+      "sha256": "9af68cc6952af8b89a5e88b3ba216495e65a5ed2e355acd0293a4c93cd1cb6a6"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiChatAddress.java",
+      "sha256": "aa2b1ca632b4142a4a552fcc94c517fc439f552b457f44a2983d1498bdfbf152"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiChatAdmission.java",
+      "sha256": "afbb7a3efe127b7507ebd6a61e6f26d90203ca115e4b9060302fffd62e6d1771"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiChatListener.java",
+      "sha256": "3a1d79f3dbb3677a62bed558cb3ff5859a4a7263f51e5c3ab49e446099d48dc4"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiCombatRequest.java",
+      "sha256": "28c41758f50ef07bb7e1e1b2ebf222d39684cc6d83b8c666967cb988f1b65d85"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiDirectRequest.java",
+      "sha256": "19eb239b6576242cc446c1fe7433ce634fff317d89edbc2f786f2743b1c70e43"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiExistingControlRequest.java",
+      "sha256": "6aeffb0e00469da72742571124947e2f892524b379752e391095c2231c0865c5"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiProposal.java",
+      "sha256": "759b1cc6c08140760ca6a620e1cdc7f582b6f435717ad5964d23db12be1da4eb"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/AiRequestFence.java",
+      "sha256": "b3163d6aa899e465a1bc59c531ae53a6d6cc918aa88721de8647549f5b14b0dd"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionCapabilityAnswer.java",
+      "sha256": "0c43f450d08499677d55c16bf4c1cba595ffc8e3524e77729e23f7f05b26eda6"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionDialogue.java",
+      "sha256": "73b6be506b2b5cc9a4bdcc3132d476f880aad5eabb7dc1b62c861c24d392e5cb"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionFactAnswer.java",
+      "sha256": "81a43d4a344b7e1d7aaa4b8e16c5ee2a09dfc2aa96eb34f7b742151ce412f040"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionFeedback.java",
+      "sha256": "ce14baba6d8fa345a1801346b3715098ba22988d69997de78f841207c24b9178"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionIncidents.java",
+      "sha256": "0d4e21bfffa837642b05e8a4840b0e3f8712097da8799d7db16cc7748ba482fa"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionPersonality.java",
+      "sha256": "6fee1f9c31600c7fe683493d6004f5a381cfd8f047c1b3bd2c9a9a40171dc1fa"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionProposal.java",
+      "sha256": "35b8aed6ea7ed8b162c07c338f97d5277a5dcec71053e3a8da3bb4b3aa5f05f0"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionResultAnswer.java",
+      "sha256": "9520a1aded91e9dafac7d0d03d9d2ccc20b1628327a4278c4df4e1cab2cea08e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionSpeech.java",
+      "sha256": "548ca6a48c01dfc5c18e9801e6e4d1e8c1e1d1c2df5ab9a4395320dd8a3a2e2b"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/CompanionTurnPolicy.java",
+      "sha256": "67bfa1be19aee1ab154bc975d15c3191cbbc00dec91abbb18d90478b653e583b"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/EntityAi.java",
+      "sha256": "b4a79434d24b29beb74b548b6a13389881f12324cb0b7f939320f3c9e484563e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/ExternalAi.java",
+      "sha256": "38b0ac8b4927610e2a7e6814523921af5663456c6edb2a1e649113e07cd571fe"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/ManagedLocalAi.java",
+      "sha256": "635185354c8e0d7686a9b02bbbf121fe08f776d0f85e44f06214a1808d1c0a8c"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/ai/OwnerCompanionPrompt.java",
+      "sha256": "4c16c1162fa1a28b66de2024ed50ac15193f33a3503134d84856865e8e110b78"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/blueprint/BlueprintBuildAuthority.java",
+      "sha256": "55837a2881be914cab0ee7ed9c8cf2291b96e89c50f5528083f3a7407d4ebbd8"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/blueprint/BlueprintCatalogView.java",
+      "sha256": "d77da7740b47516024d72bb1e2dc13004d1734440c2fd9cc62dbbd9cdbdbb13e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/blueprint/BlueprintPreview.java",
+      "sha256": "dbdca799b2223cd41ec821faa88704e2c4615d8d1138fc95aae6ae69a13d9f81"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/blueprint/BlueprintSupportStore.java",
+      "sha256": "4c3ca8a4fc4532e8fdca13dae4d824f33e8ae9f0a8fafe01140175d3ce407af2"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/BridgeCommand.java",
+      "sha256": "7dd62875b67e00c189e9455563d58c2b86e2e5387feb917e852dc092a5fc1464"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/BridgeListener.java",
+      "sha256": "785b13a23d7cf19685a9e7425e28c3756da6d1444922032e4f366b92d91ca3d4"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/BridgeResult.java",
+      "sha256": "7067ef2f92a7ac512c365cf836f8d15c0e88b6b0bcee059c2b0f1d37185e295e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/BridgeServer.java",
+      "sha256": "3af06c23b7415db14595cb2bf341f5fa014d54ab00123b170c5da2034faa8146"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/FramedJsonChannel.java",
+      "sha256": "0211b6cad21a09bf72849c90e032e4428b7d67d608c4cafd31e72cfa01eeb571"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/PendingCommandQueue.java",
+      "sha256": "62df0910403090e822ef9d67b3d327e2cce66d8ec745d1a89b9afbfb1c689cc3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/ProtocolException.java",
+      "sha256": "8d2e699477f368bc0b399016355ff0d7b68bdd08c731aed6f68cdc26b6eb6252"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/bridge/TelemetrySnapshot.java",
+      "sha256": "3b35776976316615a34865e04c0e686a2912d373964c619bb27e001560187d4b"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/CapabilityStatusRenderer.java",
+      "sha256": "9d527a9c266a5215a33227b0732e891df277c7c2dcc93e4a737c35796ce3adce"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/CommandHelp.java",
+      "sha256": "8774d443d37642466b50d9159ab78c408318248fba74300334c7071e082a72ba"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/CommandInput.java",
+      "sha256": "46d0c4f3166b647f9ca98d67be0dd03b05bf045ca9a91ab3b0c909258b3ca652"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/CommandPresentation.java",
+      "sha256": "563d12110616f711df379b79a5ab73b326d06760832741161f1bc88c4f4a766d"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/ControllerAccessPolicy.java",
+      "sha256": "5fced6ff593bbfa6be5de94526940633023aea62a6b7c465f64203b37be8c4fb"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/EntityCommand.java",
+      "sha256": "f4aceeb6c50320ec6098aef2475de711ab1c9c200f0a29eb3c8ea9575ba0c9d0"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/HomeFurnitureSelection.java",
+      "sha256": "c5e339b07a76cfe7cfd6296758cadbf9542a453b8a3345a30a2d4e6f77172615"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/ItemBatchArguments.java",
+      "sha256": "265a2e79c1fdcc25820ba81f576550b7dc4ed09702ea90445225cf884fe68901"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/OwnerNoticePolicy.java",
+      "sha256": "6ad69ce1eeea84fdb17da4381526ee6c731028eb32fe9167aac81dd3c5f52831"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/QueueInput.java",
+      "sha256": "50d72ec1d0018e27d098127a28cd3aa867b117ca95b8bb975bd6ef8f47798742"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/command/TidySpotSelection.java",
+      "sha256": "550464df488199d7475e2e42c057ef46d901bc59b3a7e496e990f39e5fef5204"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/config/BridgeSettings.java",
+      "sha256": "b0451535d1da38ea6d2bfdb74dfa91df2deca37e0c3a6dd6d11f2d3decf23309"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryCommitRequest.java",
+      "sha256": "64cfab031f43a279d32154f2136f8179385cbf91e8964eb58acbdc946c06edfd"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryCommitResult.java",
+      "sha256": "2282e3ad73601317d14fc9f84b48fca82d10c4fb97650d7b6859996eb950c42e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryPickupPolicy.java",
+      "sha256": "9ff987d7884d27eadd9879fdfd91f093bfd3618656d85d5b1dad7d88bf69b462"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryReceiptListener.java",
+      "sha256": "0403b0af9d07e3a409fed0a07e609d5feda92babd9e04f411957c12eb3759c64"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryStackSelection.java",
+      "sha256": "1d94b103fca05806134a61245d2c9774e4067a63bacd7d2d7dffd0b44119481a"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/DeliveryTransactionRegistry.java",
+      "sha256": "7db13e963d185716492e148862633b655337929f70b2ba3d5cbbac5429fd8fe3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/delivery/PaperDeliveryCommitter.java",
+      "sha256": "0fff574dffabe15c71018e56f89a29167dcc28f2f2e2036bb16e714dcc9877dd"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/EntityBridgePlugin.java",
+      "sha256": "1720fa4f70c5eeb95720b99944b54ec6946196d97f0188bbc09a1a2bce5abd5c"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/mission/Mission.java",
+      "sha256": "2e0bf8e287c527d320ac4a3a3efad4002c5a4d658d303e0f32e5d4923e8bffe9"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/mission/MissionRegistry.java",
+      "sha256": "70dcc5448233b126c2ac2c93eed61845bcc646004c60802ffe77c1b30e8aa0eb"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/mission/MissionStatus.java",
+      "sha256": "a735cdc359978195d1a8b11022e682d50caa7884496571d83d34892ec9f91fb8"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/mission/OrderedJobQueue.java",
+      "sha256": "fc8db82ceae2c7a0201488659bd0ccd2599bfcce1bcf4f7afa177de5aaa384af"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/recipe/PaperRecipeCatalogExporter.java",
+      "sha256": "9be2106179db78dc94c5f88778cead62c0b3299481d359e3f5fdb20ab3e34073"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/recipe/RecipeCatalogEntry.java",
+      "sha256": "da3e5a1045cc4cc8a425f8dab1a7926216f949bfacf06d897ec544315a454676"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/recipe/RecipeCatalogSnapshot.java",
+      "sha256": "cf8514448d54744a5e1431078ce272ea41c09ce45e7bbbfc0331643c825b1146"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/recipe/RecipeDiscoveryResult.java",
+      "sha256": "51cf1206372e7b06bc80dea7da896fdaa2b812d362681f6894afb099f53a6ff0"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/recipe/SparseShapedRecipe.java",
+      "sha256": "0a614949ab7a724c85a54c8395e2685c058e7500d00534466ec00617b42c08ec"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/EntityRelationshipProtocol.java",
+      "sha256": "1e2a081781c547abfc7afb88f830414055bf19270c9d890128880f95b0b62e9a"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/EntityRelationshipSynchronization.java",
+      "sha256": "20ac4fb7260150308187e6811f72f524d53c78b9cf6a1badb3205a0ad7aea50e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/ForeignItemClaim.java",
+      "sha256": "1d5aa748fc144cbbf0198df2294f3e64c00448e803c0afe325e45ed877c0b482"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/ForeignItemClaimListener.java",
+      "sha256": "54ee44a2ffdc42a964bf9faf7f937541c9f3a67f9c74d9a76e765b80c33e51d1"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/ForeignItemClaimPolicy.java",
+      "sha256": "ba18c3c20a028ac3fdd07ea16d1a80b73c03121b031bcb3210eefa4462bb0b84"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/ForeignItemClaimProtocol.java",
+      "sha256": "e008e10804d45e1f9061d048683e3dba97ba59383090aefc29615366bf21ab56"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/ForeignItemClaimSynchronization.java",
+      "sha256": "aa4eccf766edaf53fd582ecb072c91643b097973ae669060e17bbb5dfac2b00f"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/FriendlyDamageGuardListener.java",
+      "sha256": "ecb31a2f4af14682f89cb2e076ee2577d01e55c9c54e82e336325516b1d7dc91"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/safety/TrustedIdentityRegistry.java",
+      "sha256": "facd9c9287ab0bb0d7bc3fdbb3e3c8fb5d50380462f40580f3020c30ba92718c"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/state/WorldStatePathResolver.java",
+      "sha256": "b667c9c7d910a9ffdb0ce7d4d41e2bfea13f2d40897002a0630579a824e9662f"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaHomePermitRegistry.java",
+      "sha256": "309820ce13dd2821c45d224e28375ada59b53a3b57da94c5e312198846ae284b"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaMutationListener.java",
+      "sha256": "658722dede186d5c24e1e970977e4e14310b6298365b770814b21aacf060eaa3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaProtocol.java",
+      "sha256": "d71674ecec3d8b67b4a141c001ac30c7b8f77082e66bd10cf9439300c79d8ba3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaRegistry.java",
+      "sha256": "8f47e36d0aae51897beb3ea3a04446536849c614a9e5b3c7a51b6a5d66b66051"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaSelection.java",
+      "sha256": "3c705e0df1c92696518c33b5e2cb6c5556b09d371bd7ea204a91d8794c4a2491"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaSelectionListener.java",
+      "sha256": "9cb167760dabe84789604d97b49fda1747aae1edb4149270640cc60685d93b18"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaStore.java",
+      "sha256": "fbbec9912038acd2fbed5ecce4a6043f6dea1060d09d8c4f1b6f1ce9c5d79025"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedAreaSynchronization.java",
+      "sha256": "f82172818a536637d0fc4ace420005df12d15d210da5f5dcb47005db1a2f285e"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/stewardship/ProtectedInventorySurfacePolicy.java",
+      "sha256": "4eb8c0cbfa0d9d5d1078c8867261cdf06bbf33f69dffe0477a11e78377eec0ac"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/AuthoritativeDamageFrame.java",
+      "sha256": "620a4e643d4666dffad21f671f5e552468f2b34b6a348fde5191afd50a237a8b"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/AuthoritativeEventListener.java",
+      "sha256": "9f1d2bd0987bcbb46ab400e4ca1fb608c3cd40c29f5e4fdaacf1f94628f22f9d"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/AuthoritativeThreatTargetFrame.java",
+      "sha256": "214ee5b9a2dbfffec68cf4c8278e583f53952913ed1cc5e58475ed41c1f49cf3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/AuthoritativeThreatTargetListener.java",
+      "sha256": "bfd00cab264239f37a106c7240b752f6189c36f0f98b45bf54bf2dd93469b15c"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/AuthoritativeThreatTargetTracker.java",
+      "sha256": "23c142cc05cc920cb470e4c662fe2d9bbf003eb36d2cfb2da8f956a5a43349a3"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/CompanionIncidentListener.java",
+      "sha256": "1c77bf2ee5883d04fe345de69788bde8037038fd2065ad6f66c6244276c28bd0"
+    },
+    {
+      "path": "server-plugin/src/main/java/dev/entitybridge/tracking/TargetTracker.java",
+      "sha256": "bb87a35d8e09e94fc577b2d338d9a947697f424a1fa73b209bf1a5e23fc42b06"
+    },
+    {
+      "path": "server-plugin/src/main/resources/config.yml",
+      "sha256": "b75c8e279f391c13529d0814e494cc01bf924d5a5ad8474fc9c9bde86e31496f"
+    },
+    {
+      "path": "server-plugin/src/main/resources/entity-companion-owner.txt",
+      "sha256": "0eb7e60cdc7981cd234ced6e7bc1327c4c3693c82cfbb7fe3c2a02e506feb7d0"
+    },
+    {
+      "path": "server-plugin/src/main/resources/plugin.yml",
+      "sha256": "9e4999497a668f0bd009e15bb717997168290a7d0f12bb552aa4d129e8ab6813"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "sha256": "5d16d9408cdae2d1502d70097c4fc3194e353e7a0bb5992546f6e9953e243006"
+    },
+    {
+      "path": "Verify-BinaryNotices.ps1",
+      "sha256": "07d433894b89107d7dafd3449983fce5db0a32ddf8e1047a5699f729cb2e7aed"
+    }
+  ]
+}

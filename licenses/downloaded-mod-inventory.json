@@ -1,0 +1,432 @@
+[
+  {
+    "file": "fabric-api-0.129.0+1.21.8.jar",
+    "sha256": "fe31a897f9886011914e3e8c292a2774d8427fe0cb2e3611cb8ce18289c612a7",
+    "nested": [
+      {
+        "file": "META-INF/jars/fabric-api-base-0.4.64+9ec45cd8f3.jar",
+        "sha256": "6cf56513a355112f0b0045cc1bfc057a372e4adba7bfc971a2c37dda21fc2704",
+        "id": "fabric-api-base",
+        "version": "0.4.64+9ec45cd8f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-api-base"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-api-lookup-api-v1-1.6.100+946bf4c3f3.jar",
+        "sha256": "2685e12c3deb4739a494240c2e99128fac0f92e8fedd7351a1f9a0eaf37cd06c",
+        "id": "fabric-api-lookup-api-v1",
+        "version": "1.6.100+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-api-lookup-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-biome-api-v1-16.0.11+946bf4c3f3.jar",
+        "sha256": "bdbedc3dbccd340b0863a73f6d1ee0743b548efad5dff7dfeacd5fd09836fdb0",
+        "id": "fabric-biome-api-v1",
+        "version": "16.0.11+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-biome-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-block-api-v1-1.1.3+946bf4c3f3.jar",
+        "sha256": "efdbbdb008f40eb7a28125a0b217ba2e81ea3072707a3fda6c7cf8621f6653e0",
+        "id": "fabric-block-api-v1",
+        "version": "1.1.3+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-block-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-block-view-api-v2-1.0.31+946bf4c3f3.jar",
+        "sha256": "9a234a21cceb12d6c4b58dab5a8a812b05eaf80bddcc849e5a56531fe97a7570",
+        "id": "fabric-block-view-api-v2",
+        "version": "1.0.31+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-block-view-api-v2"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-command-api-v2-2.2.53+946bf4c3f3.jar",
+        "sha256": "45f5b70b29c60d49fd6d8579ce4c0f4d6439dacc23028e9cc54de2e28934f68d",
+        "id": "fabric-command-api-v2",
+        "version": "2.2.53+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-command-api-v2"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-content-registries-v0-10.0.18+946bf4c3f3.jar",
+        "sha256": "13adcac713cd3800c734a6d3edb8bc48ff33a2821c466c499eea5c86bf6f958f",
+        "id": "fabric-content-registries-v0",
+        "version": "10.0.18+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-content-registries-v0"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-convention-tags-v1-2.1.40+7f945d5bf3.jar",
+        "sha256": "3729779fe3d17d5d93dc94a0fbb063f875ba8159d836b1413a845bf931535bca",
+        "id": "fabric-convention-tags-v1",
+        "version": "2.1.40+7f945d5bf3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-convention-tags-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-convention-tags-v2-2.15.5+eb5df52ff3.jar",
+        "sha256": "1cea90dd8645d7405020c316715a21ad426c09b58aac4e6441c09116c8f3c04d",
+        "id": "fabric-convention-tags-v2",
+        "version": "2.15.5+eb5df52ff3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-convention-tags-v2"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-crash-report-info-v1-0.3.15+946bf4c3f3.jar",
+        "sha256": "346e956d680d21338d6ee1f471aa88a0cd4d41ead90f5a90f058bc93c6932b4d",
+        "id": "fabric-crash-report-info-v1",
+        "version": "0.3.15+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-crash-report-info-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-data-attachment-api-v1-1.8.10+946bf4c3f3.jar",
+        "sha256": "411b1a51ee0e5706075e92fe410414eb0ed69b2b95ad8f5419b326db7c5ac0cf",
+        "id": "fabric-data-attachment-api-v1",
+        "version": "1.8.10+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-data-attachment-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-data-generation-api-v1-23.2.4+55e55d29f3.jar",
+        "sha256": "085d6b1254d279fa5a3e750bbb936bbda332c632b774753fbe7ebd62f4f98b57",
+        "id": "fabric-data-generation-api-v1",
+        "version": "23.2.4+55e55d29f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-data-generation-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-dimensions-v1-4.0.19+946bf4c3f3.jar",
+        "sha256": "b1167e30c600ff6db693150af31ba3bad0f764888a99283f624550b78d776bbe",
+        "id": "fabric-dimensions-v1",
+        "version": "4.0.19+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-dimensions-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-entity-events-v1-2.1.1+c9e47273f3.jar",
+        "sha256": "0e6fe1dafb4a8e604713088b765ff73dfcd75b1bfc1a73900d06c24413bef2bc",
+        "id": "fabric-entity-events-v1",
+        "version": "2.1.1+c9e47273f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-entity-events-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-events-interaction-v0-4.0.23+946bf4c3f3.jar",
+        "sha256": "e1363b2c4678d95edd973c31cdb7a4387b6d0decaedbf2673829202ea105c337",
+        "id": "fabric-events-interaction-v0",
+        "version": "4.0.23+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-events-interaction-v0"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-game-rule-api-v1-1.0.73+c64c9c5bf3.jar",
+        "sha256": "fd483bef65aea9de65393bc0bd687d31e23d337ca3915f57f17ac020d1e1b63a",
+        "id": "fabric-game-rule-api-v1",
+        "version": "1.0.73+c64c9c5bf3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-game-rule-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-item-api-v1-11.4.3+946bf4c3f3.jar",
+        "sha256": "6e49eadeffcdf1e59278cba11c6f4cd7124b3f46dd85818a1b7cdcf64507edb6",
+        "id": "fabric-item-api-v1",
+        "version": "11.4.3+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-item-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-item-group-api-v1-4.2.13+946bf4c3f3.jar",
+        "sha256": "cf38c966c70f96ecc65be532f860e1564200126a8e406351e2e6289a98e6e6eb",
+        "id": "fabric-item-group-api-v1",
+        "version": "4.2.13+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-item-group-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-key-binding-api-v1-1.0.65+946bf4c3f3.jar",
+        "sha256": "5a6e175633ee902f61bae6bb9bfd6d6b2e5da04a5798b4fa7cbd9c4bf121c35c",
+        "id": "fabric-key-binding-api-v1",
+        "version": "1.0.65+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-key-binding-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-lifecycle-events-v1-2.6.3+db4dfd85f3.jar",
+        "sha256": "8ae4103007b81ca24e5ad3d4e921848f626a6a9098c2945bdedf7520e93f0af2",
+        "id": "fabric-lifecycle-events-v1",
+        "version": "2.6.3+db4dfd85f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-lifecycle-events-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-loot-api-v2-3.0.55+3f89f5a5f3.jar",
+        "sha256": "5aaadc71c94827212827427261e640105271f1e4a880b1eaeaee8c564ca38a98",
+        "id": "fabric-loot-api-v2",
+        "version": "3.0.55+3f89f5a5f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-loot-api-v2"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-loot-api-v3-2.0.2+946bf4c3f3.jar",
+        "sha256": "d0af7b8bae03e1b6510d895a01a0275b74bf762f68581f1c02c502cc199c6780",
+        "id": "fabric-loot-api-v3",
+        "version": "2.0.2+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-loot-api-v3"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-message-api-v1-6.1.1+946bf4c3f3.jar",
+        "sha256": "a66084c234a31cc56038db50588928d12c5d813670bf44772bba83e256ac2861",
+        "id": "fabric-message-api-v1",
+        "version": "6.1.1+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-message-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-model-loading-api-v1-5.2.5+946bf4c3f3.jar",
+        "sha256": "abde5a851f4875730fb4357984fc646b4d0b5524f58eb9ad36c44dc272086ad3",
+        "id": "fabric-model-loading-api-v1",
+        "version": "5.2.5+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-model-loading-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-networking-api-v1-5.0.1+946bf4c3f3.jar",
+        "sha256": "ba050c23855683d80567f3710604b1e154ea981c04686a976ee1e0d917711e66",
+        "id": "fabric-networking-api-v1",
+        "version": "5.0.1+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-networking-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-object-builder-api-v1-21.1.7+946bf4c3f3.jar",
+        "sha256": "05ee3c089a18138926f7c663514fba018120514528d6dac23b47692d0da5ab4e",
+        "id": "fabric-object-builder-api-v1",
+        "version": "21.1.7+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-object-builder-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-particles-v1-4.1.7+946bf4c3f3.jar",
+        "sha256": "dbe044faadf45b4af483711b7536202c45432ff8a8e1493a7083bc6155a9059c",
+        "id": "fabric-particles-v1",
+        "version": "4.1.7+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-particles-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-recipe-api-v1-8.1.14+946bf4c3f3.jar",
+        "sha256": "d6a9315df0d9ca89bbd7016c66f6382dc512f812c9bb0dc139675422f9e2ea71",
+        "id": "fabric-recipe-api-v1",
+        "version": "8.1.14+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-recipe-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-registry-sync-v0-6.1.27+946bf4c3f3.jar",
+        "sha256": "b878a66ea7a27e4d7cccd3c2637defa861a0cf2cd598bb259eab5ded3389c3f8",
+        "id": "fabric-registry-sync-v0",
+        "version": "6.1.27+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-registry-sync-v0"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-renderer-api-v1-7.0.2+946bf4c3f3.jar",
+        "sha256": "43d2686b1937b4babdaa49790f22aa604f064074d0faff8ac150e4419daef4ef",
+        "id": "fabric-renderer-api-v1",
+        "version": "7.0.2+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-renderer-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-renderer-indigo-4.0.2+946bf4c3f3.jar",
+        "sha256": "2c0657746ace7712e0b97c40c92da3b441398456e6c45dd822fec1b663da9cfe",
+        "id": "fabric-renderer-indigo",
+        "version": "4.0.2+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-renderer-indigo"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-rendering-fluids-v1-3.1.30+fa6cb72bf3.jar",
+        "sha256": "57590c5c01c998740aeaf8017a5deb5174cef12801b9f6d228c407d6c2ee1f04",
+        "id": "fabric-rendering-fluids-v1",
+        "version": "3.1.30+fa6cb72bf3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-rendering-fluids-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-rendering-v1-12.4.0+e8d43c76f3.jar",
+        "sha256": "bf36f54a0138b605f4e2888303808b9160bd9033c5f93a428fa959ca1c85451a",
+        "id": "fabric-rendering-v1",
+        "version": "12.4.0+e8d43c76f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-rendering-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-resource-conditions-api-v1-5.0.24+946bf4c3f3.jar",
+        "sha256": "4da20028abac386b8237252255326775a2ed71dc5b195e469bbd2a17a7f445ad",
+        "id": "fabric-resource-conditions-api-v1",
+        "version": "5.0.24+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-resource-conditions-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-resource-loader-v0-3.1.11+946bf4c3f3.jar",
+        "sha256": "908db42eaacbb791be68bf94a34dc173ee0dffea5c2cdfdba293468896693e15",
+        "id": "fabric-resource-loader-v0",
+        "version": "3.1.11+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-resource-loader-v0"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-screen-api-v1-2.1.0+277ecf7df3.jar",
+        "sha256": "f4f8e1f9836d6419ef98823b414586ea794a1caba0194e548e285ab9c85538a3",
+        "id": "fabric-screen-api-v1",
+        "version": "2.1.0+277ecf7df3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-screen-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-screen-handler-api-v1-1.3.136+946bf4c3f3.jar",
+        "sha256": "6384d83fc17773cd65fe25e8f7d3aaf5c18e80efa693252a8eb4475b67e8ca42",
+        "id": "fabric-screen-handler-api-v1",
+        "version": "1.3.136+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-screen-handler-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-sound-api-v1-1.0.42+946bf4c3f3.jar",
+        "sha256": "5ec786af307afb85c89e03ec7b65f2b03edc46def7100ec9c2a1aebe61f9d4d0",
+        "id": "fabric-sound-api-v1",
+        "version": "1.0.42+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-sound-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-tag-api-v1-1.2.1+946bf4c3f3.jar",
+        "sha256": "bacede4c458c9905de60ae767b6e11862ab30decca08878059e8e3902aed2442",
+        "id": "fabric-tag-api-v1",
+        "version": "1.2.1+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-tag-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-transfer-api-v1-6.0.5+946bf4c3f3.jar",
+        "sha256": "d15bcef1cd439c92eaf3648429aee68b0187c88be68ed557ed1ffdf8ad61bac6",
+        "id": "fabric-transfer-api-v1",
+        "version": "6.0.5+946bf4c3f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-transfer-api-v1"
+        ]
+      },
+      {
+        "file": "META-INF/jars/fabric-transitive-access-wideners-v1-6.4.1+ac3e15d1f3.jar",
+        "sha256": "62ab81e226ca0d5f20285c6a8dc0e319503c0a5fee55b4f2312837893df17b74",
+        "id": "fabric-transitive-access-wideners-v1",
+        "version": "6.4.1+ac3e15d1f3",
+        "license": "Apache-2.0",
+        "noticeEntries": [
+          "LICENSE-fabric-transitive-access-wideners-v1"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "baritone-api-fabric-1.15.0.jar",
+    "sha256": "c58ef35a133b6ffce96a74682138ac2ee818cbc063b7c62671db9f9d7d783ebb",
+    "nested": [
+      {
+        "file": "META-INF/jars/nether-pathfinder-1.4.1.jar",
+        "sha256": "5bf06c2406b80c86a94fd58f18623fcc1877324e3beb7e01ac6503c5a7a260a6",
+        "id": "dev_babbaj_nether-pathfinder",
+        "version": "1.4.1",
+        "license": null,
+        "noticeEntries": []
+      }
+    ]
+  }
+]

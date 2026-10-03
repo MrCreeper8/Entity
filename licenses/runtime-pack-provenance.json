@@ -1,0 +1,26 @@
+[
+  {
+    "id": "microsoft.netcore.app.runtime.win-x64",
+    "version": "8.0.31",
+    "sha256": "1504ead20c9a25e4c47ece56b6cd407697ea0cde0148e07e71bebc1e2d841c2f",
+    "commit": "1219a42122cf5190c7f512850557e38c422430dc",
+    "license": "MIT",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.win-x64/8.0.31/microsoft.netcore.app.runtime.win-x64.8.0.31.nupkg"
+  },
+  {
+    "id": "microsoft.windowsdesktop.app.runtime.win-x64",
+    "version": "8.0.31",
+    "sha256": "f2d14397e990f3c39efb325abd6d6430312a16a3c4596a55fb10b36c8fdcbd33",
+    "commit": "337963009d48a3016b50172b451b4e80f78791a7",
+    "license": "MIT",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsdesktop.app.runtime.win-x64/8.0.31/microsoft.windowsdesktop.app.runtime.win-x64.8.0.31.nupkg"
+  },
+  {
+    "id": "microsoft.netcore.app.host.win-x64",
+    "version": "8.0.31",
+    "sha256": "d8acca41e27c80fdefa6ccd6dcbd2b76a7cda5900432755351415a39c5571a1c",
+    "commit": "1219a42122cf5190c7f512850557e38c422430dc",
+    "license": "MIT",
+    "source": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.host.win-x64/8.0.31/microsoft.netcore.app.host.win-x64.8.0.31.nupkg"
+  }
+]

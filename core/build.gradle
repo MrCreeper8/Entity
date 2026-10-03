@@ -1,0 +1,7 @@
+plugins { id 'java-library' }
+group = 'dev.entity'
+def versions = new Properties()
+file('../build-identity/version.properties').withInputStream { versions.load(it) }
+version = versions.getProperty('version')
+java { toolchain.languageVersion = JavaLanguageVersion.of(21) }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 21 }

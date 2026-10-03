@@ -1,0 +1,38 @@
+# Exact in-game name allowed to control Entity. Permission checks are applied too.
+owner-name: "CHANGE_ME"
+required-permission: "entitybridge.control"
+
+# Additional exact in-game names trusted to use /e without OP or a permissions plugin.
+controller-names: []
+
+# When true, the allowlist is temporarily disabled without deleting it.
+controllers-locked: false
+
+bridge:
+  # EntityBridge deliberately refuses non-loopback addresses.
+  host: "127.0.0.1"
+  port: 8765
+
+  # Generated securely when empty. Copy the generated token to Entity's client config.
+  auth-token: ""
+  max-frame-bytes: 2097152
+  handshake-timeout-seconds: 10
+  pending-command-limit: 512
+
+  # Applies only to transient queries. Durable mission frames never expire.
+  pending-command-ttl-seconds: 30
+
+target-update-ticks: 5
+
+# Player mode acts only on information a real client can obtain. Oracle mode allows
+# a future server-side intelligence provider to supply authoritative world knowledge.
+default-mode: "player"
+
+# Optional, local-only language adapter. Install the verified local AI pack first.
+# /e ai on|off changes this preference. No network/cloud fallback is allowed.
+local-ai:
+  enabled: false
+  # Style only. Conversation expires after ten minutes; no persistent chat.
+  personality:
+    preset: owner
+    custom: ""

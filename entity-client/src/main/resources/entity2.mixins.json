@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "package": "dev.entity.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftClientMixin",
+    "ClientPlayerInteractionManagerMixin",
+    "BaritonePropertyCostMixin",
+    "BaritoneFailedAscendOwnerMixin",
+    "BaritoneCalculationOwnerAccessor",
+    "BaritoneResourceDescentOwnerMixin",
+    "BaritoneResourceDescentCostMixin",
+    "BaritoneFailedAscendCostMixin",
+    "BaritoneStairBridgeMixin",
+    "BaritoneBuildDiagonalMixin",
+    "BaritoneBuilderMaterialsMixin",
+    "BaritoneMiningBuoyancyMixin",
+    "BlockItemPlacementInvoker",
+    "MinecraftClientLifecycleMixin",
+    "MouseMixin",
+    "WindowMixin",
+    "InputAccessor",
+    "ClientPlayerInputMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,15 @@
+name: EntityBridge
+version: ${version}
+main: dev.entitybridge.EntityBridgePlugin
+api-version: '1.21.8'
+description: Commands, durable missions and authoritative recipes for the Entity Minecraft companion.
+author: EntityBot
+commands:
+  entity:
+    description: Control Entity and inspect its durable missions.
+    aliases: [e]
+    usage: /e help [topic]
+permissions:
+  entitybridge.control:
+    description: Allows the primary owner to control Entity; trusted controller names are separately allowlisted.
+    default: op

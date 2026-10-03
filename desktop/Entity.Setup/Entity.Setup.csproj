@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <AssemblyName>Entity-Setup</AssemblyName><Version>2.22.0</Version><RuntimeFrameworkVersion>8.0.31</RuntimeFrameworkVersion>
+    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('bundle.zip')"><EmbeddedResource Include="bundle.zip" LogicalName="Entity.Bundle" /></ItemGroup>
+</Project>

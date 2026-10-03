@@ -1,0 +1,39 @@
+plugins { id 'fabric-loom' version "${loom_version}" }
+def versions = new Properties()
+file('../build-identity/version.properties').withInputStream { versions.load(it) }
+version = versions.getProperty('version')
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+// Existing runtime selectors include intentional intermediary invokers and
+// Baritone descriptors. Let TinyRemapper remap mixins, not the legacy named-API
+// annotation processor that incorrectly rejects those runtime selectors.
+loom { mixin { useLegacyMixinAp = false } }
+repositories { mavenCentral(); maven { url = 'https://maven.fabricmc.net/' } }
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    modImplementation files(project.baritone_jar)
+    compileOnly 'net.fabricmc:sponge-mixin:0.15.5+mixin.0.8.7'
+    compileOnly 'io.github.llamalad7:mixinextras-fabric:0.4.1'
+    implementation project(':core')
+    include project(':core')
+}
+def identity = file('../build/identity/entity2-build-identity.properties')
+def generateIdentity = tasks.register('generateEntity2BuildIdentity', Exec) {
+    workingDir file('..')
+    commandLine 'pwsh', '-NoProfile', '-File', file('../build-identity/Generate-Entity2BuildIdentity.ps1').absolutePath,
+        '-RepositoryRoot', file('..').absolutePath, '-RequireClean'
+    outputs.file identity
+    outputs.upToDateWhen { false }
+}
+processResources {
+    dependsOn generateIdentity
+    inputs.property 'version', project.version
+    inputs.file identity
+    from(identity)
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 21 }

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "entity2",
+  "version": "${version}",
+  "name": "Entity 2",
+  "description": "Persistent Minecraft companion with universal acquisition, tactical combat, and 3-D vanilla swimming.",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.entity.client.EntityClientMod"
+    ]
+  },
+  "mixins": [
+    "entity2.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.8",
+    "java": ">=21",
+    "fabric-api": "*",
+    "baritone": "1.15.0"
+  }
+}

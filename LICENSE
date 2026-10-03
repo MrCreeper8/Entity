@@ -1,0 +1,36 @@
+Entity Personal-Use License
+
+Copyright (c) 2026 Entity contributors / MrCreeper8.
+All rights reserved, except for the permissions stated below.
+
+This license applies only to original Entity-authored code and content. It does
+not replace or limit licenses for third-party code, libraries, assets, models,
+game software or other components. See THIRD-PARTY-NOTICES.md and each component's
+applicable license and copyright notices.
+
+You may download and retain copies of Entity, build the provided original source
+for your own personal use, install and run Entity, and play using it. You may make
+personal backup copies and change supported local settings, profiles and imported
+content that you have permission to use. This is not an open-source license.
+
+Except as expressly permitted here, by applicable law, by third-party licenses,
+or by applicable hosting-platform terms, no permission is granted to redistribute,
+sell, sublicense, publish modified versions of, or create derivative works from
+Entity-authored code/content. All other rights are reserved. For other uses,
+obtain permission from the Entity rights holder.
+
+Third-party rights are expressly preserved. In particular, nothing in this
+license restricts your rights under the GNU Lesser General Public License or
+GNU General Public License applicable to Baritone or another covered library.
+You may modify and replace such a library with an interface-compatible version,
+recombine or relink it with Entity, and modify Entity to the extent necessary to
+exercise those library rights. Reverse engineering for debugging modifications
+to covered libraries is permitted. Third-party covered portions may be copied,
+modified and redistributed under their own licenses, irrespective of the
+restrictions on original Entity-authored portions above. Applicable source,
+installation-information and relinking obligations remain in force.
+
+The software is provided as is, without warranties of any kind, to the extent
+permitted by applicable law. The rights holders are not liable for loss of data,
+world changes or other damages arising from its use, except where such a
+limitation is prohibited by applicable law. Back up your game worlds and data.
