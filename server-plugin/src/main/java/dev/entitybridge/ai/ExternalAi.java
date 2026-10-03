@@ -20,6 +20,8 @@ public final class ExternalAi implements AiBackendFactory.Provider {
     private final HttpClient http;
     private volatile boolean closed;
     private volatile String observation = "endpoint not tested";
+    private volatile AiStatus.Snapshot status = new AiStatus.Snapshot(AiStatus.Provider.EXTERNAL,
+            AiStatus.State.CONFIGURED, AiStatus.Detail.CONFIGURED_EXTERNAL);
     private CompletableFuture<HttpResponse<byte[]>> pending;
 
     ExternalAi(AiBackendFactory.ExternalConfig config, String apiKey) { this(config, apiKey, REQUEST_TIMEOUT); }
@@ -35,6 +37,10 @@ public final class ExternalAi implements AiBackendFactory.Provider {
 
     @Override public boolean configured() { return !closed; }
     @Override public String label() { return "AI"; }
+    @Override public AiStatus.Snapshot status() { return status; }
+    private synchronized void observed(AiStatus.State state, AiStatus.Detail detail) {
+        if (!closed) status = new AiStatus.Snapshot(AiStatus.Provider.EXTERNAL, state, detail);
+    }
     @Override public String description() {
         return closed ? "External AI stopped." : (config.loopback() ? "External-local " : "External cloud (consented) ")
                 + config.model() + "; " + observation + "; no automatic fallback";
@@ -58,6 +64,7 @@ public final class ExternalAi implements AiBackendFactory.Provider {
             if (closed) throw new IOException("External AI is off.");
             if (pending != null) throw new IOException("External AI is already answering a request.");
             call = http.sendAsync(builder.build(), limitedBody()); pending = call;
+            observed(AiStatus.State.LOADING, AiStatus.Detail.REQUESTING);
         }
         try {
             // Covers the entire body, including a peer that sends headers then stalls indefinitely.
@@ -66,18 +73,24 @@ public final class ExternalAi implements AiBackendFactory.Provider {
             if (response.statusCode() != 200) throw new IOException("External AI returned HTTP " + response.statusCode() + ".");
             String content = content(response.body());
             observation = "last structured response succeeded";
+            observed(AiStatus.State.READY, AiStatus.Detail.READY_EXTERNAL);
             return content;
         } catch (TimeoutException expired) {
             call.cancel(true); observation = "last request timed out";
+            observed(AiStatus.State.FAILED, AiStatus.Detail.TIMEOUT);
             throw new IOException("External AI exceeded its request deadline.");
         } catch (ExecutionException | CancellationException transport) {
             observation = "last request failed";
+            observed(AiStatus.State.FAILED, transport.getCause() instanceof HttpTimeoutException
+                    ? AiStatus.Detail.TIMEOUT : AiStatus.Detail.TRANSPORT_FAILED);
             // Never propagate a URL, body, Authorization header or provider diagnostic.
             throw new IOException("External AI transport failed; nothing was accepted.");
         } catch (InterruptedException interrupted) {
-            call.cancel(true); observation = "last request cancelled"; throw interrupted;
+            call.cancel(true); observation = "last request cancelled";
+            observed(AiStatus.State.CONFIGURED, AiStatus.Detail.CANCELLED); throw interrupted;
         } catch (IOException rejected) {
-            observation = "last request failed"; throw rejected;
+            observation = "last request failed";
+            observed(AiStatus.State.FAILED, AiStatus.requestFailure(rejected)); throw rejected;
         } finally {
             synchronized (this) { if (pending == call) pending = null; }
         }
@@ -135,6 +148,7 @@ public final class ExternalAi implements AiBackendFactory.Provider {
 
     @Override public synchronized void close() {
         closed = true;
+        status = new AiStatus.Snapshot(AiStatus.Provider.EXTERNAL, AiStatus.State.STOPPED, AiStatus.Detail.STOPPED);
         if (pending != null) pending.cancel(true);
         http.shutdownNow();
     }

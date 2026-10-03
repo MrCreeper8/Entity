@@ -18,6 +18,7 @@ public final class AiBackendFactory {
         boolean configured();
         /** Configuration/last observed request status, never a claim that an endpoint is ready now. */
         String description();
+        AiStatus.Snapshot status();
     }
 
     /** These messages contain field names only and are safe for an owner-facing setup error. */
@@ -60,6 +61,7 @@ public final class AiBackendFactory {
         return new Provider() {
             public boolean configured() { return backend.configured(); }
             public String description() { return backend.description(); }
+            public AiStatus.Snapshot status() { return backend.status(); }
             public String complete(String system, String request, JsonObject schema) throws Exception {
                 return backend.complete(system, request, schema);
             }

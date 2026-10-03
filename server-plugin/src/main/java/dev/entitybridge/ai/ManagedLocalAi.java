@@ -56,11 +56,15 @@ public final class ManagedLocalAi implements AutoCloseable {
     private volatile boolean modelReady;
     private volatile Timing lastTiming;
     private volatile DeviceDiagnostics deviceDiagnostics = new DeviceDiagnostics(-1, -1, -1, -1);
+    private volatile AiStatus.Snapshot status;
 
     private ManagedLocalAi(Config config, Path runtimeDirectory, Launcher launcher) {
         this.config = config;
         this.runtimeDirectory = runtimeDirectory;
         this.launcher = launcher;
+        status = new AiStatus.Snapshot(AiStatus.Provider.MANAGED,
+                config == null ? AiStatus.State.UNCONFIGURED : AiStatus.State.CONFIGURED,
+                config == null ? AiStatus.Detail.UNCONFIGURED : AiStatus.Detail.CONFIGURED_MANAGED);
         this.http = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(2))
                 .followRedirects(HttpClient.Redirect.NEVER).version(HttpClient.Version.HTTP_1_1)
                 .proxy(new ProxySelector() {
@@ -89,6 +93,16 @@ public final class ManagedLocalAi implements AutoCloseable {
     }
 
     public boolean configured() { return config != null && !closed; }
+
+    /** Passive process observation only: never starts or probes the managed runtime. */
+    public synchronized AiStatus.Snapshot status() {
+        if (!closed && status.state() == AiStatus.State.READY && (child == null || !child.isAlive()))
+            observed(AiStatus.State.FAILED, AiStatus.Detail.RUNTIME_EXITED);
+        return status;
+    }
+    private synchronized void observed(AiStatus.State state, AiStatus.Detail detail) {
+        if (!closed) status = new AiStatus.Snapshot(AiStatus.Provider.MANAGED, state, detail);
+    }
 
     /** Last finished admitted inference call, not command acceptance; null before the first call finishes. */
     public Timing lastTiming() { return lastTiming; }
@@ -140,7 +154,13 @@ public final class ManagedLocalAi implements AutoCloseable {
             measurement.promptTokens = reportedCount(envelope, "prompt_n");
             measurement.generatedTokens = reportedCount(envelope, "predicted_n");
             measurement.success = true;
+            observed(AiStatus.State.READY, AiStatus.Detail.READY_MANAGED);
             return answer;
+        } catch (IOException | InterruptedException failure) {
+            if (status.detail() != AiStatus.Detail.FILES_FAILED && status.detail() != AiStatus.Detail.STARTUP_FAILED)
+                observed(failure instanceof InterruptedException ? AiStatus.State.CONFIGURED : AiStatus.State.FAILED,
+                        AiStatus.requestFailure(failure));
+            throw failure;
         } finally {
             Timing timing = measurement.finish();
             lastTiming = timing;
@@ -161,11 +181,15 @@ public final class ManagedLocalAi implements AutoCloseable {
         }
         // Multi-GB hashing is deliberately on the inference worker, not plugin startup.
         measurement.coldStart = true;
+        observed(AiStatus.State.LOADING, AiStatus.Detail.VERIFYING);
         long hashBegan = System.nanoTime();
         try { config.verifyFiles(); }
+        catch (IOException failure) { observed(AiStatus.State.FAILED, AiStatus.Detail.FILES_FAILED); throw failure; }
         finally { measurement.hashMillis = elapsedMillis(hashBegan); }
         long startupBegan = System.nanoTime();
+        observed(AiStatus.State.LOADING, AiStatus.Detail.STARTING);
         try { return startVerified(); }
+        catch (IOException failure) { observed(AiStatus.State.FAILED, AiStatus.Detail.STARTUP_FAILED); throw failure; }
         finally { measurement.startupMillis = elapsedMillis(startupBegan); }
     }
 
@@ -236,6 +260,7 @@ public final class ManagedLocalAi implements AutoCloseable {
                             limitedBody(8192));
                     if (ready.statusCode() == 200) {
                         modelReady = true;
+                        observed(AiStatus.State.READY, AiStatus.Detail.READY_MANAGED);
                         synchronized (startupLog) { startupLog.setLength(0); }
                         return session;
                     }
@@ -436,7 +461,10 @@ public final class ManagedLocalAi implements AutoCloseable {
 
     @Override public void close() {
         Process owned;
-        synchronized (this) { closed = true; owned = child; }
+        synchronized (this) {
+            closed = true; owned = child;
+            status = new AiStatus.Snapshot(AiStatus.Provider.MANAGED, AiStatus.State.STOPPED, AiStatus.Detail.STOPPED);
+        }
         stopOwned(owned);
         synchronized (this) {
             cleanupToken();

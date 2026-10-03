@@ -70,6 +70,9 @@ public final class EntityBridgePlugin extends JavaPlugin implements BridgeListen
     private EntityRelationshipSynchronization relationshipSynchronization;
     private BukkitTask bridgeRetryTask;
     private BukkitTask idleContextTask;
+    private BukkitTask aiStatusTask;
+    private dev.entitybridge.ai.AiStatusReceipt aiStatusReceipt;
+    private boolean aiStatusWriteFailure;
     private int bridgeStartFailures;
 
     @Override
@@ -159,6 +162,16 @@ public final class EntityBridgePlugin extends JavaPlugin implements BridgeListen
         entityCommand.initializeQueue(worldState.directory().resolve("orders.json"), worldState.overworldId());
         entityCommand.initializeBlueprintAuthority(blueprintAuthority);
         entityCommand.initializeAi();
+        aiStatusReceipt = new dev.entitybridge.ai.AiStatusReceipt(getDataFolder().toPath());
+        aiStatusTask = getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
+            try {
+                aiStatusReceipt.publish(entityCommand.aiStatus());
+                aiStatusWriteFailure = false;
+            } catch (IOException failure) {
+                if (!aiStatusWriteFailure) getLogger().warning("AI dashboard receipt could not be saved; AI behavior is unchanged.");
+                aiStatusWriteFailure = true;
+            }
+        }, 0L, 60L);
         getServer().getPluginManager().registerEvents(
                 new dev.entitybridge.tracking.CompanionIncidentListener(entityCommand), this);
         getServer().getPluginManager().registerEvents(new dev.entitybridge.ai.AiChatListener(new dev.entitybridge.ai.AiChatListener.Port() {
@@ -229,7 +242,12 @@ public final class EntityBridgePlugin extends JavaPlugin implements BridgeListen
 
     @Override
     public void onDisable() {
+        if (aiStatusTask != null) { aiStatusTask.cancel(); aiStatusTask = null; }
         if (entityCommand != null) entityCommand.closeAi();
+        if (aiStatusReceipt != null) {
+            try { aiStatusReceipt.stop(); }
+            catch (IOException failure) { getLogger().warning("Final AI dashboard stopped receipt could not be saved."); }
+        }
         if (idleContextTask != null) { idleContextTask.cancel(); idleContextTask = null; }
         if (targetTracker != null) {
             targetTracker.stop();

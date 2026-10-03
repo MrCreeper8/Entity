@@ -127,7 +127,9 @@ public final class EntityCommand implements CommandExecutor, TabCompleter {
     private String latestBlueprintResumeRequest;
     private JsonObject pendingBlueprintResume;
     private EntityAi localAi;
-    private AiBackendFactory.Provider aiBackend;
+    private volatile AiBackendFactory.Provider aiBackend;
+    private volatile dev.entitybridge.ai.AiStatus.Observation aiUnavailable =
+            new dev.entitybridge.ai.AiStatus.Observation(false, dev.entitybridge.ai.AiStatus.off());
     private String aiLabel = "Local AI";
     private String localAiDescription = "Choose an AI provider in the app, then /e ai on; ordinary commands still work.";
     private final Map<UUID, Player> aiRequestPlayers = new LinkedHashMap<>();
@@ -337,6 +339,13 @@ public final class EntityCommand implements CommandExecutor, TabCompleter {
         if (plugin.getConfig().getBoolean("local-ai.enabled", false)) openAi();
     }
 
+    /** Safe for the asynchronous dashboard writer; does not infer, start or probe AI. */
+    public dev.entitybridge.ai.AiStatus.Observation aiStatus() {
+        AiBackendFactory.Provider backend = aiBackend;
+        return backend == null ? aiUnavailable
+                : new dev.entitybridge.ai.AiStatus.Observation(backend.configured(), backend.status());
+    }
+
     private final dev.entitybridge.ai.AiChatAdmission chatAdmission = new dev.entitybridge.ai.AiChatAdmission();
 
     /** Safe to snapshot from the asynchronous chat event; authority is checked below on tick. */
@@ -364,6 +373,7 @@ public final class EntityCommand implements CommandExecutor, TabCompleter {
             AiBackendFactory.Provider backend = AiBackendFactory.load(plugin.getDataFolder().toPath());
             aiLabel = backend.label();
             localAiDescription = backend.description();
+            aiUnavailable = new dev.entitybridge.ai.AiStatus.Observation(false, backend.status());
             if (!backend.configured()) { backend.close(); return; }
             aiBackend = backend;
             localAi = new EntityAi(backend, new EntityAi.Port() {
@@ -408,6 +418,9 @@ public final class EntityCommand implements CommandExecutor, TabCompleter {
                 }
             });
         } catch (IOException | RuntimeException failure) {
+            aiUnavailable = new dev.entitybridge.ai.AiStatus.Observation(false,
+                    new dev.entitybridge.ai.AiStatus.Snapshot(dev.entitybridge.ai.AiStatus.Provider.NONE,
+                            dev.entitybridge.ai.AiStatus.State.FAILED, dev.entitybridge.ai.AiStatus.Detail.CONFIGURATION_FAILED));
             localAiDescription = failure instanceof AiBackendFactory.ConfigurationException
                     ? failure.getMessage() : "AI setup is unavailable; normal /e commands still work.";
             plugin.getLogger().warning("AI configuration could not be loaded (" + failure.getClass().getSimpleName() + ").");
@@ -417,6 +430,9 @@ public final class EntityCommand implements CommandExecutor, TabCompleter {
     public void closeAi() {
         chatAdmission.invalidate();
         if (localAi != null) { localAi.close(); localAi = null; }
+        AiBackendFactory.Provider previous = aiBackend;
+        aiUnavailable = new dev.entitybridge.ai.AiStatus.Observation(false, previous == null
+                ? dev.entitybridge.ai.AiStatus.off() : previous.status());
         aiBackend = null;
         aiRequestPlayers.clear();
         companionFeedback.clear();
