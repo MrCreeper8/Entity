@@ -7,6 +7,12 @@ commands and server observations. Human players can use an unmodified vanilla
 
 ## Distribution status
 
+**[Download the Windows standalone preview](https://github.com/MrCreeper8/Entity/releases/tag/v2.22.1).**
+The 2.22.1 installer and portable ZIP have verified local server joining and normal
+shutdown in both Visible and Background modes. Final-package managed/external AI
+end-to-end checks and earlier survival acceptance remain incomplete. This is a
+preview, not a claim that every gameplay capability is fully verified.
+
 This is the **2.22.0 distribution candidate source**, not a declaration that an
 installer or final release has shipped. Standalone setup and AI
 backend selection require the exact candidate's release verification. Follow the
