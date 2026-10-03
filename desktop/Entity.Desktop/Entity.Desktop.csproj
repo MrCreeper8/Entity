@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>Entity</AssemblyName>
-    <Version>2.22.0</Version>
+    <Version>2.22.1</Version>
     <RuntimeFrameworkVersion>8.0.31</RuntimeFrameworkVersion>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>

@@ -132,6 +132,7 @@ public sealed class MinecraftRuntime
         AppPaths.AtomicWrite(Path.Combine(paths.Runtime, "runtime-mode"), settings.WindowMode.ToLowerInvariant());
         // Written before Fabric's static bootstrap; hidden operation is never just a Win32 hide.
         AppPaths.AtomicWrite(Path.Combine(paths.Runtime, "background-input-isolation"), "true");
+        PrepareBotOptions(paths.Game);
         if (!string.IsNullOrWhiteSpace(bridgeToken))
         {
             var configFile = Path.Combine(paths.Runtime, "client.json");
@@ -147,7 +148,7 @@ public sealed class MinecraftRuntime
             Session = MSession.CreateOfflineSession(settings.BotName),
             MaximumRamMb = settings.ClientMemoryMb,
             ScreenWidth = 960, ScreenHeight = 540,
-            GameLauncherName = "Entity", GameLauncherVersion = "2.22.0",
+            GameLauncherName = "Entity", GameLauncherVersion = "2.22.1",
             ServerIp = connect ? settings.ServerHost : null,
             ServerPort = settings.ServerPort,
             ExtraJvmArguments = new MArgument[]
@@ -179,6 +180,16 @@ public sealed class MinecraftRuntime
         if (line == null) return;
         // Do not retain launch arguments, environment variables or credentials.
         lock (this) { writer?.WriteLine(line); }
+    }
+    public static void PrepareBotOptions(string gameDirectory)
+    {
+        // This dedicated bot has no human to dismiss first-run onboarding. Minecraft
+        // queues Quick Play behind that screen, including in hidden mode.
+        var file = Path.Combine(gameDirectory, "options.txt");
+        var lines = File.Exists(file) ? File.ReadAllLines(file).ToList() : new List<string>();
+        lines.RemoveAll(line => line.StartsWith("onboardAccessibility:", StringComparison.Ordinal));
+        lines.Add("onboardAccessibility:false");
+        AppPaths.AtomicWrite(file, string.Join(Environment.NewLine, lines) + Environment.NewLine);
     }
     public JsonElement? Status()
     {
